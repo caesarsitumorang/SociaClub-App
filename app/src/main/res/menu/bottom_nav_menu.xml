@@ -1,0 +1,28 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:title=""
+        android:icon="@drawable/ic_nav_home"
+        />
+
+    <item
+        android:id="@+id/organizerFragment"
+        android:title=""
+        android:icon="@drawable/ic_organizer"
+       />
+
+    <item
+        android:id="@+id/votingFragment"
+        android:title=""
+        android:icon="@drawable/ic_voting"
+         />
+
+    <item
+        android:id="@+id/profilFragment"
+        android:title=""
+        android:icon="@drawable/ic_profile"
+        />
+
+</menu>

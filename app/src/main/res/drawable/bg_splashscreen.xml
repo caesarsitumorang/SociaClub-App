@@ -1,0 +1,21 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Shadow layer -->
+    <item android:top="10dp" android:left="10dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/light_orange"/> <!-- Semi-transparent black for shadow -->
+            <corners
+                android:topLeftRadius="50dp"
+                android:topRightRadius="50dp" />
+        </shape>
+    </item>
+    <!-- Main layer -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/light_orange"/>
+            <stroke android:width="5dp" android:color="@color/light_orange"/>
+            <corners
+                android:topLeftRadius="50dp"
+                android:topRightRadius="50dp" />
+        </shape>
+    </item>
+</layer-list>

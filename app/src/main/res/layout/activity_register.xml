@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.register.RegisterActivity">
+
+
+    <FrameLayout
+        android:id="@+id/sheet1"
+        android:layout_width="0dp"
+        android:layout_height="700dp"
+        android:background="@drawable/vektor"
+        android:gravity="top|center_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/sheet2"
+        android:layout_width="0dp"
+        android:layout_height="600dp"
+        android:background="@drawable/gambarvektor1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/sheet3"
+        tools:ignore="MissingConstraints">
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/sheet3"
+        android:layout_width="427dp"
+        android:layout_height="482dp"
+        android:background="@drawable/vektor4"
+        app:layout_constraintEnd_toEndOf="@+id/sheet1"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/bg_edit_text"
+        android:layout_width="330dp"
+        android:layout_height="375dp"
+        android:background="@drawable/bg_login"
+        android:layout_marginTop="180dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/sheet1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="125dp"
+        android:layout_height="108dp"
+        android:layout_marginTop="37dp"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="@+id/bg_edit_text"
+        app:layout_constraintStart_toStartOf="@+id/bg_edit_text"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/title_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SociaClub-FIK"
+        android:textSize="28sp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="@+id/logo"
+        app:layout_constraintStart_toStartOf="@+id/logo"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+    <TextView
+        android:id="@+id/title_app1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Organizer"
+        android:textSize="28sp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="@+id/title_app"
+        app:layout_constraintStart_toStartOf="@+id/title_app"
+        app:layout_constraintTop_toBottomOf="@+id/title_app" />
+
+    <TextView
+        android:id="@+id/tv_title_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:textSize="25sp"
+        android:layout_marginTop="9dp"
+        app:layout_constraintEnd_toEndOf="@+id/bg_edit_text"
+        app:layout_constraintStart_toStartOf="@+id/bg_edit_text"
+        app:layout_constraintTop_toTopOf="@+id/bg_edit_text" />
+
+    <com.rpl.sicfo.ui.costumView.EditTextEmail
+        android:id="@+id/edemail_register"
+        android:layout_width="299dp"
+        android:layout_height="55dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:hint="Email"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textColorHint="@color/dark_gray"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="@+id/bg_edit_text"
+        app:layout_constraintStart_toStartOf="@+id/bg_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_register" />
+
+    <com.rpl.sicfo.ui.costumView.EditText
+        android:id="@+id/ednama_register"
+        android:layout_width="299dp"
+        android:layout_height="55dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:hint="Nama Lengkap"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:textColorHint="@color/dark_gray"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="@+id/bg_edit_text"
+        app:layout_constraintStart_toStartOf="@+id/bg_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/edemail_register" />
+
+
+    <com.rpl.sicfo.ui.costumView.EditText
+        android:id="@+id/ednpm_register"
+        android:layout_width="299dp"
+        android:layout_height="55dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="13dp"
+        android:hint="Npm"
+        android:inputType="number"
+        android:padding="10dp"
+        android:textColorHint="@color/dark_gray"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="@+id/bg_edit_text"
+        app:layout_constraintStart_toStartOf="@+id/bg_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/ednama_register" />
+
+    <com.rpl.sicfo.ui.costumView.EditTextPassword
+        android:id="@+id/edpassword_register"
+        android:layout_width="298dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="15dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:textColorHint="@color/dark_gray"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="@+id/bg_edit_text"
+        app:layout_constraintStart_toStartOf="@+id/bg_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/ednpm_register" />
+
+    <ImageView
+        android:id="@+id/ic_password_toggle"
+        android:layout_width="45dp"
+        android:layout_height="33dp"
+        android:padding="8dp"
+        android:src="@drawable/ic_password"
+        app:layout_constraintBottom_toBottomOf="@+id/edpassword_register"
+        app:layout_constraintEnd_toEndOf="@+id/edpassword_register"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintTop_toTopOf="@+id/edpassword_register" />
+
+    <com.rpl.sicfo.ui.costumView.ButtonRegister
+        android:id="@+id/bt_regis"
+        android:layout_width="143dp"
+        android:layout_height="45dp"
+        android:background="@color/blue"
+        android:textColor="@color/white"
+        android:layout_marginTop="9dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bg_edit_text"
+        app:layout_constraintEnd_toEndOf="@+id/edpassword_register"
+        app:layout_constraintStart_toStartOf="@+id/edpassword_register"
+        app:layout_constraintTop_toBottomOf="@+id/edpassword_register" />
+
+    <TextView
+        android:id="@+id/tv_toregis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Belum punya akun?"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.338"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sheet1"
+        app:layout_constraintVertical_bias="0.393" />
+
+    <TextView
+        android:id="@+id/tvRegis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Daftar"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintStart_toEndOf="@+id/tv_toregis"
+        app:layout_constraintTop_toTopOf="@+id/tv_toregis"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ProgressBar
+        android:id="@+id/progressBarRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/sheet1" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "665972156963",
+    "project_id": "story-md-app",
+    "storage_bucket": "story-md-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:665972156963:android:bfba5d433b9c2cdc1e1f96",
+        "android_client_info": {
+          "package_name": "com.rpl.sicfo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvfe8tKL2jEkEkJj3fBDyB81o0ukGTqhE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
