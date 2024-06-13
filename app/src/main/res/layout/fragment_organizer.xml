@@ -1,10 +1,460 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.organizer.OrganizerFragment">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="422dp"
+            android:layout_height="194dp"
+            android:background="@drawable/bg_detail_organisasi"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="-2dp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_logo"
+            android:layout_width="117dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/avatar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_title_organisasi"
+            style="@style/textColorTitleHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:inputType="textMultiLine"
+            android:maxLines="2"
+            android:text="lohoan"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/view3"
+            app:layout_constraintEnd_toEndOf="@+id/img_logo"
+            app:layout_constraintStart_toStartOf="@+id/img_logo"
+            app:layout_constraintTop_toBottomOf="@+id/img_logo"
+            app:layout_constraintVertical_bias="0.148" />
+
+        <TextView
+            android:id="@+id/tv_fakultas"
+            style="@style/textColorTitleOrganisasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="loho"
+            app:layout_constraintBottom_toBottomOf="@+id/view3"
+            app:layout_constraintEnd_toEndOf="@+id/tv_title_organisasi"
+            app:layout_constraintHorizontal_bias="0.476"
+            app:layout_constraintStart_toStartOf="@+id/tv_title_organisasi"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_organisasi"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/img_detail1"
+            android:layout_width="336dp"
+            android:layout_height="39dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_oranizer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+        <TextView
+            android:id="@+id/tv_forum_chat"
+            style="@style/textColorTitleHome"
+            android:layout_width="144dp"
+            android:layout_height="21dp"
+            android:layout_marginStart="16dp"
+            android:text="Forum Chat"
+            app:layout_constraintBottom_toBottomOf="@+id/img_detail1"
+            app:layout_constraintStart_toStartOf="@+id/img_detail1"
+            app:layout_constraintTop_toTopOf="@+id/img_detail1"
+            app:layout_constraintVertical_bias="0.545" />
+
+        <ImageView
+            android:id="@+id/to_forumchat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_next"
+            app:layout_constraintBottom_toBottomOf="@+id/img_detail1"
+            app:layout_constraintEnd_toEndOf="@+id/img_detail1"
+            app:layout_constraintTop_toTopOf="@+id/img_detail1"
+            app:layout_constraintVertical_bias="0.586" />
+
+        <TextView
+            android:id="@+id/tv_title_struktural"
+            style="@style/textColorTitleHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="264dp"
+            android:text="Struktural :"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.056"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/img_detail_misi"
+            android:layout_width="335dp"
+            android:layout_height="222dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/bg_oranizer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_struktural" />
+
+        <TextView
+            android:id="@+id/tv_bph"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            style="@style/textColorTitleOrganisasi"
+            android:text="Badan Pengurus Harian"
+            app:layout_constraintStart_toStartOf="@+id/img_detail_misi"
+            app:layout_constraintTop_toTopOf="@+id/img_detail_misi" />
+
+        <TextView
+            android:id="@+id/tv_title_ketua"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            style="@style/textColorTitleOrganizer"
+            android:text="Ketua :"
+            app:layout_constraintEnd_toEndOf="@+id/tv_bph"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/img_detail_misi"
+            app:layout_constraintTop_toBottomOf="@+id/tv_bph" />
+
+        <TextView
+            android:id="@+id/tv_desc_ketua"
+            style="@style/textColorTitleOrganizer"
+            android:layout_width="185dp"
+            android:layout_height="27dp"
+            android:layout_marginEnd="4dp"
+            android:ellipsize="end"
+            android:inputType="textMultiLine"
+            android:maxLines="2"
+            android:text="ARPIL"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_title_ketua"
+            app:layout_constraintEnd_toEndOf="@+id/img_detail_misi"
+            app:layout_constraintTop_toTopOf="@+id/tv_title_ketua"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tv_title_wakil"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="48dp"
+            android:text="Wakil Ketua :"
+            style="@style/textColorTitleOrganizer"
+            app:layout_constraintEnd_toEndOf="@+id/tv_bph"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/img_detail_misi"
+            app:layout_constraintTop_toBottomOf="@+id/tv_bph" />
+
+        <TextView
+            android:id="@+id/tv_desc_wakil"
+            style="@style/textColorTitleOrganizer"
+            android:layout_width="185dp"
+            android:layout_height="27dp"
+            android:layout_marginEnd="4dp"
+            android:ellipsize="end"
+            android:inputType="textMultiLine"
+            android:maxLines="2"
+            android:text="lohoooo"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_title_wakil"
+            app:layout_constraintEnd_toEndOf="@+id/img_detail_misi"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/img_detail_misi"
+            app:layout_constraintTop_toTopOf="@+id/tv_title_wakil"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tv_title_sekretaris"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="84dp"
+            style="@style/textColorTitleOrganizer"
+            android:text="Sekretaris :"
+            app:layout_constraintEnd_toEndOf="@+id/tv_bph"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/img_detail_misi"
+            app:layout_constraintTop_toBottomOf="@+id/tv_bph" />
+
+        <TextView
+            android:id="@+id/tv_desc_sekretaris"
+            style="@style/textColorTitleOrganizer"
+            android:layout_width="185dp"
+            android:layout_height="27dp"
+            android:layout_marginEnd="4dp"
+            android:text="lohoman"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_title_sekretaris"
+            app:layout_constraintEnd_toEndOf="@+id/img_detail_misi"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/img_detail_misi"
+            app:layout_constraintTop_toTopOf="@+id/tv_title_sekretaris"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tv_title_wakil_sekretaris"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="120dp"
+            style="@style/textColorTitleOrganizer"
+            android:text="Wakil Sekretaris :"
+            app:layout_constraintEnd_toEndOf="@+id/tv_bph"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/img_detail_misi"
+            app:layout_constraintTop_toBottomOf="@+id/tv_bph" />
+
+        <TextView
+            android:id="@+id/tv_desc_wakil_sekretaris"
+            style="@style/textColorTitleOrganizer"
+            android:layout_width="185dp"
+            android:layout_height="27dp"
+            android:layout_marginEnd="4dp"
+            android:text="aprilman"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_title_wakil_sekretaris"
+            app:layout_constraintEnd_toEndOf="@+id/img_detail_misi"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/img_detail_misi"
+            app:layout_constraintTop_toTopOf="@+id/tv_title_wakil_sekretaris" />
+
+        <TextView
+            android:id="@+id/tv_title_bendahara"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="156dp"
+            android:text="Bendahara :"
+            style="@style/textColorTitleOrganizer"
+            app:layout_constraintEnd_toEndOf="@+id/tv_bph"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/img_detail_misi"
+            app:layout_constraintTop_toBottomOf="@+id/tv_bph" />
+
+        <TextView
+            android:id="@+id/tv_desc_bendahara"
+            style="@style/textColorTitleOrganizer"
+            android:layout_width="185dp"
+            android:layout_height="27dp"
+            android:layout_marginEnd="4dp"
+            android:text="aprilman"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_title_bendahara"
+            app:layout_constraintEnd_toEndOf="@+id/img_detail_misi"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/img_detail_misi"
+            app:layout_constraintTop_toTopOf="@+id/tv_title_bendahara"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <View
+            android:id="@+id/img_team_internal"
+            android:layout_width="335dp"
+            android:layout_height="352dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_oranizer"
+            app:layout_constraintEnd_toEndOf="@+id/img_detail_misi"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/img_detail_misi"
+            app:layout_constraintTop_toBottomOf="@+id/img_detail_misi" />
+
+        <TextView
+            android:id="@+id/tv_team_internal"
+            style="@style/textColorTitleOrganisasi"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="12dp"
+            android:text="Team Internal"
+            app:layout_constraintBottom_toBottomOf="@+id/img_team_internal"
+            app:layout_constraintEnd_toEndOf="@+id/img_team_internal"
+            app:layout_constraintHorizontal_bias="0.097"
+            app:layout_constraintStart_toStartOf="@+id/img_team_internal"
+            app:layout_constraintTop_toTopOf="@+id/img_detail_misi"
+            app:layout_constraintVertical_bias="0.432" />
+
+        <TextView
+            android:id="@+id/tv_title_ketua_internal"
+            style="@style/textColorTitleOrganizer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="12dp"
+            android:text="Ketua :"
+            app:layout_constraintEnd_toEndOf="@+id/img_team_internal"
+            app:layout_constraintHorizontal_bias="0.079"
+            app:layout_constraintStart_toStartOf="@+id/img_team_internal"
+            app:layout_constraintTop_toBottomOf="@+id/tv_team_internal" />
+
+        <TextView
+            android:id="@+id/tv_desc_ketua_internal"
+            style="@style/textColorTitleOrganizer"
+            android:layout_width="185dp"
+            android:layout_height="27dp"
+            android:ellipsize="end"
+            android:inputType="textMultiLine"
+            android:maxLines="2"
+            android:text="ARPIL"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_title_ketua_internal"
+            app:layout_constraintEnd_toEndOf="@+id/img_team_internal"
+            app:layout_constraintTop_toTopOf="@+id/tv_title_ketua_internal"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tv_anggota_internal"
+            style="@style/textColorTitleOrganisasi"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Anggota"
+            app:layout_constraintBottom_toBottomOf="@+id/img_team_internal"
+            app:layout_constraintEnd_toEndOf="@+id/img_team_internal"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tv_team_internal"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_ketua_internal"
+            app:layout_constraintVertical_bias="0.098" />
+
+        <TextView
+            android:id="@+id/tv_desc_anggota1"
+            style="@style/textColorTitleOrganizer"
+            android:layout_width="258dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:inputType="textMultiLine"
+            android:maxLines="2"
+            android:text="ARPIL"
+            app:layout_constraintEnd_toEndOf="@+id/img_team_internal"
+            app:layout_constraintHorizontal_bias="0.574"
+            app:layout_constraintStart_toStartOf="@+id/tv_anggota_internal"
+            app:layout_constraintTop_toBottomOf="@+id/tv_anggota_internal" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_desc_anggota2"
+            style="@style/textColorTitleOrganizer"
+            android:layout_width="258dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="32dp"
+            android:ellipsize="end"
+            android:inputType="textMultiLine"
+            android:maxLines="2"
+            android:text="ARPIL"
+            app:layout_constraintEnd_toEndOf="@+id/tv_desc_anggota1"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tv_desc_anggota1"
+            app:layout_constraintTop_toTopOf="@+id/tv_desc_anggota1" />
+
+        <TextView
+            android:id="@+id/tv_desc_anggota3"
+            style="@style/textColorTitleOrganizer"
+            android:layout_width="258dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:inputType="textMultiLine"
+            android:maxLines="2"
+            android:text="ARPIL"
+            app:layout_constraintEnd_toEndOf="@+id/tv_desc_anggota1"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tv_desc_anggota2"
+            app:layout_constraintTop_toBottomOf="@+id/tv_desc_anggota2" />
+
+
+        <TextView
+            android:id="@+id/tv_desc_anggota4"
+            style="@style/textColorTitleOrganizer"
+            android:layout_width="258dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="32dp"
+            android:ellipsize="end"
+            android:inputType="textMultiLine"
+            android:maxLines="2"
+            android:text="ARPIL"
+            app:layout_constraintEnd_toEndOf="@+id/tv_desc_anggota3"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tv_desc_anggota3"
+            app:layout_constraintTop_toBottomOf="@+id/tv_desc_anggota2" />
+
+        <TextView
+            android:id="@+id/tv_desc_anggota5"
+            style="@style/textColorTitleOrganizer"
+            android:layout_width="258dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:inputType="textMultiLine"
+            android:maxLines="2"
+            android:text="ARPIL"
+            app:layout_constraintEnd_toEndOf="@+id/tv_desc_anggota3"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tv_desc_anggota3"
+            app:layout_constraintTop_toBottomOf="@+id/tv_desc_anggota4" />
+
+        <TextView
+            android:id="@+id/tv_desc_anggota6"
+            style="@style/textColorTitleOrganizer"
+            android:layout_width="258dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:inputType="textMultiLine"
+            android:maxLines="2"
+            android:text="ARPIL"
+            app:layout_constraintEnd_toEndOf="@+id/tv_desc_anggota3"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tv_desc_anggota3"
+            app:layout_constraintTop_toBottomOf="@+id/tv_desc_anggota5" />
+
+        <TextView
+            android:id="@+id/tv_desc_anggota7"
+            style="@style/textColorTitleOrganizer"
+            android:layout_width="258dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="40dp"
+            android:ellipsize="end"
+            android:inputType="textMultiLine"
+            android:maxLines="2"
+            android:text="ARPIL"
+            app:layout_constraintEnd_toEndOf="@+id/tv_desc_anggota3"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tv_desc_anggota3"
+            app:layout_constraintTop_toBottomOf="@+id/tv_desc_anggota5" />
+
+        <View
+            android:id="@+id/img_team_eksternal"
+            android:layout_width="335dp"
+            android:layout_height="272dp"
+            android:layout_marginTop="52dp"
+            android:background="@drawable/bg_oranizer"
+            app:layout_constraintEnd_toEndOf="@+id/img_detail_misi"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/img_detail_misi"
+            app:layout_constraintTop_toBottomOf="@+id/img_team_internal" />
+
+        <ProgressBar
+            android:id="@+id/progressBar_Organizer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -32,7 +32,7 @@ class WelcomeActivity : AppCompatActivity() {
 
     private fun setupLayout() {
         layouts = intArrayOf(
-            R.layout.slide_1,
+//            R.layout.slide_1,
             R.layout.slide_2,
             R.layout.slide_3
         )

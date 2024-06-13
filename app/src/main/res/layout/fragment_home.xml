@@ -28,7 +28,7 @@
             app:layout_constraintEnd_toEndOf="@+id/view"
             app:layout_constraintStart_toStartOf="@+id/view"
             app:layout_constraintTop_toTopOf="@+id/view"
-            app:srcCompat="@drawable/lianis" />
+            android:src="@drawable/avatar" />
 
         <View
             android:id="@+id/view"
@@ -39,10 +39,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.067"
             app:layout_constraintStart_toStartOf="@+id/bg_home_atas"
-            app:layout_constraintTop_toTopOf="@+id/bg_home_atas"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.018" />
 
         <ImageView
+            android:id="@+id/img_notifikasi"
             android:layout_width="40dp"
             android:layout_height="39dp"
             android:src="@drawable/ic_notifikasi"
@@ -93,29 +94,28 @@
 
         <TextView
             android:id="@+id/tv_sociaclub"
+            style="@style/textColorTitleHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="80dp"
             android:text="SociaClub- FIK Organizer"
             android:textSize="23sp"
-            style="@style/textColorTitleHome"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/img_profile"
-            app:layout_constraintTop_toBottomOf="@+id/view" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.search.SearchBar
             android:id="@+id/searchBar"
             android:layout_width="331dp"
             android:layout_height="48dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="128dp"
             android:background="@drawable/bg_search"
             android:hint="cari"
             android:textColorHint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.448"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_sociaclub" />
+            app:layout_constraintTop_toTopOf="@+id/bg_home_atas" />
 
         <TextView
             android:id="@+id/tv_berita_organisasi"

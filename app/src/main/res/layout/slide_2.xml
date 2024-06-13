@@ -44,7 +44,7 @@
 
     <FrameLayout
         android:id="@+id/frameLayout"
-        android:layout_width="410dp"
+        android:layout_width="0dp"
         android:layout_height="313dp"
         android:background="@drawable/bg_splashscreen"
         android:elevation="10dp"

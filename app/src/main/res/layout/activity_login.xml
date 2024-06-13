@@ -179,6 +179,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
+        android:indeterminateDrawable="@drawable/circular_progress_bar"
         app:layout_constraintBottom_toBottomOf="@+id/sheet1"
         app:layout_constraintEnd_toEndOf="@+id/sheet1"
         app:layout_constraintStart_toStartOf="@+id/sheet1"

@@ -33,5 +33,12 @@ class DetailBeritaKegiatan : AppCompatActivity() {
 
         // Hide ProgressBar when content is loaded
         binding.progressBar.visibility = View.GONE
+        backtoHome()
+    }
+
+    private fun backtoHome() {
+        binding.ibBack.setOnClickListener {
+            finish()
+        }
     }
 }

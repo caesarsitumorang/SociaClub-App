@@ -27,7 +27,9 @@ import com.rpl.sicfo.data.Organisasi
 import com.rpl.sicfo.databinding.FragmentHomeBinding
 import com.rpl.sicfo.ui.berita.DetailBeritaKegiatan
 import com.rpl.sicfo.ui.klubFikom.DetailKlubFikomActivity
+import com.rpl.sicfo.ui.notifikasi.NotifikasiActivity
 import com.rpl.sicfo.ui.organisasiFikom.DetailOrganisasiFikomActivity
+import com.rpl.sicfo.ui.register.RegisterActivity
 import java.util.Timer
 import java.util.TimerTask
 
@@ -88,6 +90,8 @@ class HomeFragment : Fragment(),
         super.onCreate(savedInstanceState)
         database = FirebaseDatabase.getInstance().reference
         auth = FirebaseAuth.getInstance()
+
+
     }
 
     override fun onCreateView(
@@ -102,7 +106,14 @@ class HomeFragment : Fragment(),
         fetchOrganisasiDataFromFirebase()
         fetchUserFullName()
         fetchDataKlubFromFirebase()
+        runNotifikasi()
         return binding.root
+    }
+
+    private fun runNotifikasi() {
+        binding.imgNotifikasi.setOnClickListener {
+            startActivity(Intent(requireContext(), NotifikasiActivity::class.java))
+        }
     }
 
     private fun setupRVKlubFikom() {
@@ -119,7 +130,7 @@ class HomeFragment : Fragment(),
         binding.rvOrganisasi.layoutManager = layoutManagerOrganisasi
         binding.rvOrganisasi.adapter = adapterorganisasi
 
-        setupSliderOrganisasi(layoutManagerOrganisasi)
+//        setupSliderOrganisasi(layoutManagerOrganisasi)
     }
 
     private fun setupRVBeritaKegiatan() {
@@ -228,7 +239,7 @@ class HomeFragment : Fragment(),
                     val image3 = dataSnapshot.child("image3").getValue(String::class.java)
                     val strukturalImage = dataSnapshot.child("strukturalImage").getValue(String::class.java)
                     val visiMisi = dataSnapshot.child("visiMisi").getValue(String::class.java)
-                    val anggota = dataSnapshot.child("anggota").getValue(String::class.java)
+//                    val anggota = dataSnapshot.child("anggota").getValue(String::class.java)
                     val detailTitle = dataSnapshot.child("detailTitle").getValue(String::class.java)
 
                     if (title != null && logo != null && detailTitle != null && fakultas != null) {
@@ -242,7 +253,7 @@ class HomeFragment : Fragment(),
                             image3 = image3 ?: "",
                             strukturalImage = strukturalImage ?: "",
                             visiMisi = visiMisi ?: "",
-                            anggota = anggota ?: "",
+//                            anggota = anggota ?: "",
                             detailTitle = detailTitle
                         )
                         organisasiList.add(organisasi)
