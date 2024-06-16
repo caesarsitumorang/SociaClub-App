@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.rpl.sicfo.MainActivity
 import com.rpl.sicfo.R
 import com.rpl.sicfo.databinding.ActivityLoginBinding
@@ -24,7 +26,7 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        auth = FirebaseAuth.getInstance()
+        auth = Firebase.auth
         sharedPreferences = getSharedPreferences("LOGIN_PREF", Context.MODE_PRIVATE)
 
         // Cek apakah pengguna sudah login sebelumnya

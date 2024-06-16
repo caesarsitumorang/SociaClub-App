@@ -9,7 +9,9 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 import com.rpl.sicfo.R
 import com.rpl.sicfo.databinding.ActivityRegisterBinding
 import com.rpl.sicfo.ui.welcome.WelcomeActivity
@@ -27,7 +29,7 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        auth = FirebaseAuth.getInstance()
+        auth = Firebase.auth
         database = FirebaseDatabase.getInstance()
         sharedPreferences = getSharedPreferences("LOGIN_PREF", Context.MODE_PRIVATE)
 

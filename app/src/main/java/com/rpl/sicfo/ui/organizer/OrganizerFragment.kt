@@ -1,6 +1,7 @@
 package com.rpl.sicfo.ui.organizer
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -22,20 +23,20 @@ class OrganizerFragment : Fragment() {
     private lateinit var database: DatabaseReference
     private lateinit var auth: FirebaseAuth
     private lateinit var sharedPreferences: SharedPreferences
+    private var organizationId: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        // Inflate the main binding layout
         binding = FragmentOrganizerBinding.inflate(inflater, container, false)
-        // Inflate the alternate binding layout
         alternateBinding = LayoutOrganizerBinding.inflate(inflater, container, false)
 
-        // Add both layouts to the container, only one will be visible at a time
         val rootView = FrameLayout(requireContext())
         rootView.addView(binding.root)
         rootView.addView(alternateBinding.root)
+
+        runForumChat()
 
         return rootView
     }
@@ -50,11 +51,26 @@ class OrganizerFragment : Fragment() {
         fetchNpmFromUsers()
     }
 
+    private fun runForumChat() {
+        binding.imgDetail1.setOnClickListener {
+            val npm = sharedPreferences.getString("npm", "") ?: ""
+            if (npm.isNotEmpty() && organizationId != null) {
+                startActivity(Intent(requireContext(), ForumChatActivity::class.java).apply {
+                    putExtra("npm", npm)
+                    putExtra("organizationId", organizationId)
+                })
+            } else {
+                Log.e("OrganizerFragment", "NPM atau Organization ID tidak ditemukan")
+            }
+        }
+    }
+
     private fun fetchNpmFromUsers() {
         val userId = auth.currentUser?.uid ?: return
         database.child("Users").child(userId).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val npm = snapshot.child("npm").getValue(String::class.java) ?: return
+                val npm = snapshot.child("npm").getValue(String::class.java) ?: ""
+                sharedPreferences.edit().putString("npm", npm).apply()
                 fetchOrganisasiDataFromFirebase(npm)
             }
 
@@ -76,6 +92,7 @@ class OrganizerFragment : Fragment() {
                             val anggotaNpm = anggotaSnapshot.getValue(String::class.java)
                             if (anggotaNpm == npm) {
                                 isMember = true
+                                organizationId = dataSnapshot.key
                                 val title = dataSnapshot.child("title").getValue(String::class.java) ?: ""
                                 val logo = dataSnapshot.child("logo").getValue(String::class.java) ?: ""
                                 val profil = dataSnapshot.child("profil").getValue(String::class.java) ?: ""
@@ -112,24 +129,12 @@ class OrganizerFragment : Fragment() {
 
         binding.tvTitleOrganisasi.text = title
         binding.tvFakultas.text = fakultas
-//        binding.tvProfilLengkap.text = profil
-//        binding.tvProfil.text = detailTitle
         Glide.with(requireContext()).load(logo).into(binding.imgLogo)
         Glide.with(requireContext()).load(image1).into(binding.imgDetail1)
-//        Glide.with(requireContext()).load(visiMisi).into(binding.imgDetailMisi)
-//        Glide.with(requireContext()).load(strukturalImage).into(binding.imgDetailMisi)
     }
 
     private fun displayAlternateLayout() {
         binding.root.visibility = View.GONE
         alternateBinding.root.visibility = View.VISIBLE
-    }
-
-    private fun showLoading(isLoading: Boolean) {
-        if (isLoading) {
-            binding.progressBarOrganizer.visibility = View.VISIBLE
-        } else {
-            binding.progressBarOrganizer.visibility = View.GONE
-        }
     }
 }

@@ -8,9 +8,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -107,8 +109,10 @@ class HomeFragment : Fragment(),
         fetchUserFullName()
         fetchDataKlubFromFirebase()
         runNotifikasi()
+        fetchUserImage(binding.imgProfile)
         return binding.root
     }
+
 
     private fun runNotifikasi() {
         binding.imgNotifikasi.setOnClickListener {
@@ -297,4 +301,40 @@ class HomeFragment : Fragment(),
             binding.tvUsername.text = "Pengguna tidak login"
         }
     }
+
+    private fun fetchUserImage(imageView: ImageView) {
+        val user = auth.currentUser
+        if (user != null) {
+            val userRef = database.child("Users").child(user.uid)
+            userRef.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        val imageUrl = snapshot.child("imageUrl").getValue(String::class.java)
+                        if (imageUrl != null && imageUrl.isNotEmpty()) {
+                            // Load the image using Glide
+                            Glide.with(imageView.context)
+                                .load(imageUrl)
+                                .into(imageView)
+                        } else {
+                            // Handle case where image URL is empty or not found
+                            imageView.setImageResource(R.drawable.avatar) // Placeholder image or default
+                        }
+                    } else {
+                        // Handle case where user data snapshot doesn't exist
+                        imageView.setImageResource(R.drawable.avatar) // Placeholder image or default
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    // Handle database error
+                    Log.e(TAG, "Failed to fetch user image: ${error.message}")
+                    imageView.setImageResource(R.drawable.avatar) // Placeholder image or default
+                }
+            })
+        } else {
+            // Handle case where user is not logged in
+            imageView.setImageResource(R.drawable.avatar) // Placeholder image or default
+        }
+    }
+
 }

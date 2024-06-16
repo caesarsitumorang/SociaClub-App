@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.profil.pengaturan.EditAkunActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/orange"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/appBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#00000000"
+            app:titleTextColor="@color/black"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:id="@+id/tv_profile"
+        style="@style/textColorTitleUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Akun"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/appBarLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/ib_back"
+        android:layout_width="47dp"
+        android:layout_height="0dp"
+        android:src="@drawable/back"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_profile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_profile" />
+
+    <TextView
+        android:id="@+id/title_nama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nama Lengkap"
+        android:textStyle="bold"
+        android:layout_marginTop="12dp"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
+    <EditText
+        android:id="@+id/edEdit_nama"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="nama"
+        android:background="@drawable/bg_edit_text"
+        android:inputType="text"
+        android:padding="15dp"
+        android:layout_marginTop="8dp"
+        android:textSize="13sp"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_nama"/>
+
+    <TextView
+        android:id="@+id/title_npm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Npm"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edEdit_nama" />
+
+    <com.rpl.sicfo.ui.costumView.EditText
+        android:id="@+id/edEdit_npm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="npm"
+        android:inputType="number"
+        android:padding="15dp"
+        android:textSize="13sp"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:clickable="false"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_npm" />
+
+    <TextView
+        android:id="@+id/title_semester"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:text="Semester"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edEdit_npm" />
+
+    <com.rpl.sicfo.ui.costumView.EditText
+        android:id="@+id/edEdit_semester"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        android:hint="semester"
+        android:inputType="number"
+        android:padding="15dp"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_semester" />
+
+    <TextView
+        android:id="@+id/title_prodi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:text="Prodi"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edEdit_semester" />
+
+    <com.rpl.sicfo.ui.costumView.EditText
+        android:id="@+id/edEdit_prodi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="prodi"
+        android:inputType="text"
+        android:padding="15dp"
+        android:textSize="13sp"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/title_prodi"
+        app:layout_constraintStart_toStartOf="@+id/title_prodi"
+        app:layout_constraintTop_toBottomOf="@+id/title_prodi" />
+
+    <TextView
+        android:id="@+id/title_alamat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:text="Alamat"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edEdit_prodi" />
+
+    <com.rpl.sicfo.ui.costumView.EditText
+        android:id="@+id/edEdit_alamat"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:hint="alamat"
+        android:inputType="text"
+        android:padding="15dp"
+        android:textSize="13sp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/title_alamat"
+        app:layout_constraintStart_toStartOf="@+id/title_alamat"
+        app:layout_constraintTop_toBottomOf="@+id/title_alamat" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_simpan"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:background="@drawable/bg_button_edit"
+        android:text="simpan"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="24dp"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/bt_simpan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edEdit_alamat" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

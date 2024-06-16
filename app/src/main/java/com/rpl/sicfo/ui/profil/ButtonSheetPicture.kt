@@ -2,7 +2,6 @@ package com.rpl.sicfo.ui.profil
 
 import android.app.Activity
 import android.app.Dialog
-import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -64,8 +63,7 @@ class ButtonSheetPicture  : BottomSheetDialogFragment(){
     }
 
     private fun startCamera() {
-//        val intent = Intent(requireContext(), CameraPictureActivity::class.java)
-//        launcherCamera.launch(intent)
+        // Implement camera functionality here if needed
     }
 
     private fun startGallery(){

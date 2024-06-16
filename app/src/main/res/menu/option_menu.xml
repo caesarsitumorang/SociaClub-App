@@ -9,7 +9,7 @@
 
     <item
         android:id="@+id/menu_logout"
-        android:title="Logout"
+        android:title="Keluar"
         app:showAsAction="never" />
 
 </menu>
