@@ -3,9 +3,15 @@ package com.rpl.sicfo.ui.profil.pengaturan
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ImageSpan
+import android.text.style.TextAppearanceSpan
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.rpl.sicfo.R
 import com.rpl.sicfo.databinding.ActivityEditAkunBinding
 
 class EditAkunActivity : AppCompatActivity() {
@@ -21,20 +27,41 @@ class EditAkunActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance().reference.child("Users").child(auth.currentUser!!.uid)
 
-        binding.ibBack.setOnClickListener {
-            backToPengaturan()
-        }
-
         binding.btSimpan.setOnClickListener {
             saveUserData()
         }
 
-        // Retrieve user data and populate EditText fields
+        setupToolbar()
         retrieveUserData()
     }
 
     private fun backToPengaturan() {
         finish()
+    }
+
+    private fun setupToolbar() {
+        val toolbar = binding.appBar
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        val title = "Edit Akun"
+        val spannableTitle = SpannableString(title)
+        spannableTitle.setSpan(TextAppearanceSpan(this, R.style.textColorTitleWelcome), 0, title.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        supportActionBar?.title = spannableTitle
+        val backIcon = ContextCompat.getDrawable(this, R.drawable.back)
+        backIcon?.let {
+            it.setBounds(0, 0, it.intrinsicWidth, it.intrinsicHeight)
+            val imageSpan = ImageSpan(it, ImageSpan.ALIGN_BASELINE)
+            spannableTitle.setSpan(imageSpan, 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val intent = Intent(this, PengaturanActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+        finish()
+        return true
     }
 
     private fun retrieveUserData() {

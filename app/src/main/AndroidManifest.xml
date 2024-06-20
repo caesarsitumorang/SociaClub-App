@@ -20,6 +20,12 @@
         android:theme="@style/Theme.Sicfo"
         tools:targetApi="31">
         <activity
+            android:name=".ui.tentang.TentangAppActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.home.pencarian.SearchActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.profil.pengaturan.EditAkunActivity"
             android:exported="false" />
         <activity

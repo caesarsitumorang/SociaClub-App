@@ -11,5 +11,6 @@ data class Organisasi(
     val image1: String = "",
     val image2: String = "",
     val image3: String = "",
-    val anggota : String =""
+    val anggota: String = ""
 )
+

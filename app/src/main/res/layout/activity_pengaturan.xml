@@ -24,17 +24,6 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <TextView
-        android:id="@+id/tv_profile"
-        style="@style/textColorTitleUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pengaturan"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/appBarLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView4"
@@ -42,25 +31,18 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
+        style="@style/textColorTitleHome"
         android:text="Informasi Pengguna"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
-    <ImageButton
-        android:id="@+id/ib_back"
-        android:layout_width="47dp"
-        android:layout_height="0dp"
-        android:src="@drawable/back"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_profile"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_profile" />
 
     <ImageView
         android:id="@+id/btn_edit"
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:layout_marginEnd="16dp"
-        android:src="@drawable/ic_next"
+        android:src="@drawable/ic_edit"
         android:contentDescription="edit_profile"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
@@ -92,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nama Lengkap"
-            android:textStyle="bold"
+            style="@style/textColorTitleOrganisasi"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -101,7 +83,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="nama_legkap"
+            android:text="nama_lengkap"
+            style="@style/textColorTitleOrganizer"
             app:layout_constraintStart_toStartOf="@+id/title_nama"
             app:layout_constraintTop_toBottomOf="@+id/title_nama" />
 
@@ -111,7 +94,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Npm"
-            android:textStyle="bold"
+            style="@style/textColorTitleOrganisasi"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_nama" />
 
@@ -121,6 +104,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="npm"
+            style="@style/textColorTitleOrganizer"
             app:layout_constraintStart_toStartOf="@+id/title_npm"
             app:layout_constraintTop_toBottomOf="@+id/title_npm" />
 
@@ -130,7 +114,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Semester"
-            android:textStyle="bold"
+            style="@style/textColorTitleOrganisasi"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_npm" />
 
@@ -140,6 +124,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="semester"
+            style="@style/textColorTitleOrganizer"
             app:layout_constraintStart_toStartOf="@+id/title_semester"
             app:layout_constraintTop_toBottomOf="@+id/title_semester" />
 
@@ -149,7 +134,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Prodi"
-            android:textStyle="bold"
+            style="@style/textColorTitleOrganisasi"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_semester" />
 
@@ -159,6 +144,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="prodi"
+            style="@style/textColorTitleOrganizer"
             app:layout_constraintStart_toStartOf="@+id/title_prodi"
             app:layout_constraintTop_toBottomOf="@+id/title_prodi" />
 
@@ -168,7 +154,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Alamat"
-            android:textStyle="bold"
+            style="@style/textColorTitleOrganisasi"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_prodi" />
 
@@ -178,6 +164,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="alamat"
+            style="@style/textColorTitleOrganizer"
             app:layout_constraintStart_toStartOf="@+id/title_alamat"
             app:layout_constraintTop_toBottomOf="@+id/title_alamat" />
 
@@ -188,18 +175,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Preferensi"
+        style="@style/textColorTitleHome"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:background="@drawable/border_rectangle"
         android:orientation="vertical"
         android:paddingVertical="16dp"
-        android:background="@drawable/border_rectangle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_detail_user">
@@ -212,17 +201,17 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tema Gelap"
-                android:textStyle="bold"
+                android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                android:layout_alignParentStart="true"/>
+                android:text="Tema Gelap"
+                android:textStyle="bold" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/btn_dark_mode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_alignParentEnd="true"/>
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true" />
 
         </RelativeLayout>
 
@@ -230,31 +219,71 @@
             android:id="@+id/btn_logout"
             android:layout_width="match_parent"
             android:layout_height="33dp"
-            android:background="@drawable/border_rectangle_solid_red"
-            android:layout_marginTop="16dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:background="@drawable/border_rectangle_solid_red"
             android:paddingHorizontal="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
                 android:text="keluar"
                 android:textColor="@color/red_200"
-                android:textStyle="bold"
-                android:layout_centerVertical="true"
-                android:layout_alignParentStart="true"/>
+                android:textStyle="bold" />
 
             <ImageView
                 android:layout_width="16dp"
                 android:layout_height="16dp"
-                android:src="@drawable/ic_next"
+                android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_alignParentEnd="true"/>
+                android:src="@drawable/ic_next" />
 
         </RelativeLayout>
 
     </LinearLayout>
 
+    <View
+        android:id="@+id/view_tentang"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/border_rectangle"
+        android:orientation="vertical"
+        android:paddingVertical="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.129">
+
+    </View>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="16dp"
+        android:text="Tentang"
+        style="@style/textColorTitleOrganisasi"
+        app:layout_constraintBottom_toBottomOf="@+id/view_tentang"
+        app:layout_constraintStart_toStartOf="@+id/view_tentang"
+        app:layout_constraintTop_toTopOf="@+id/view_tentang"
+        app:layout_constraintVertical_bias="0.483" />
+
+    <ImageView
+        android:id="@+id/btn_tentang"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_next"
+        app:layout_constraintBottom_toBottomOf="@+id/view_tentang"
+        app:layout_constraintEnd_toEndOf="@+id/view_tentang"
+        app:layout_constraintTop_toTopOf="@+id/view_tentang" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

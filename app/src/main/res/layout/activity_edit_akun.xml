@@ -25,32 +25,11 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
-        android:id="@+id/tv_profile"
-        style="@style/textColorTitleUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edit Akun"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/appBarLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/ib_back"
-        android:layout_width="47dp"
-        android:layout_height="0dp"
-        android:src="@drawable/back"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_profile"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_profile" />
-
-    <TextView
         android:id="@+id/title_nama"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nama Lengkap"
-        android:textStyle="bold"
+        style="@style/textColorTitleOrganisasi"
         android:layout_marginTop="12dp"
         android:layout_marginHorizontal="16dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +57,7 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
         android:text="Npm"
-        android:textStyle="bold"
+        style="@style/textColorTitleOrganisasi"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edEdit_nama" />
 
@@ -105,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:text="Semester"
-        android:textStyle="bold"
+        style="@style/textColorTitleOrganisasi"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edEdit_npm" />
@@ -130,7 +109,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:text="Prodi"
-        android:textStyle="bold"
+        style="@style/textColorTitleOrganisasi"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edEdit_semester" />
@@ -155,7 +134,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:text="Alamat"
-        android:textStyle="bold"
+        style="@style/textColorTitleOrganisasi"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edEdit_prodi" />

@@ -4,16 +4,23 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ImageSpan
+import android.text.style.TextAppearanceSpan
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.rpl.sicfo.R
 import com.rpl.sicfo.databinding.ActivityPengaturanBinding
 import com.rpl.sicfo.ui.login.LoginActivity
+import com.rpl.sicfo.ui.tentang.TentangAppActivity
 
 
 class PengaturanActivity : AppCompatActivity() {
@@ -44,25 +51,50 @@ class PengaturanActivity : AppCompatActivity() {
         tvProdi = binding.tvProdi
         tvAlamat = binding.tvAlamat
 
-        backToProfil()
+        setupToolbar()
         onClickKeluar()
         fetchUserData()
+        binding.viewTentang.setOnClickListener{
+            onClickTentangApp()
+        }
 
         binding.btnEdit.setOnClickListener {
             navigateToEditAkun()
         }
     }
 
-    private fun backToProfil() {
-        binding.ibBack.setOnClickListener {
-            finish()
+    private fun setupToolbar() {
+        val toolbar = binding.appBar
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        val title = "Pengaturan"
+        val spannableTitle = SpannableString(title)
+        spannableTitle.setSpan(TextAppearanceSpan(this, R.style.textColorTitleWelcome), 0, title.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        supportActionBar?.title = spannableTitle
+        val backIcon = ContextCompat.getDrawable(this, R.drawable.back)
+        backIcon?.let {
+            it.setBounds(0, 0, it.intrinsicWidth, it.intrinsicHeight)
+            val imageSpan = ImageSpan(it, ImageSpan.ALIGN_BASELINE)
+            spannableTitle.setSpan(imageSpan, 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
     private fun onClickKeluar() {
         binding.btnLogout.setOnClickListener {
             showLogoutConfirmationDialog()
         }
+    }
+
+    private fun onClickTentangApp(){
+        val intent = Intent(this, TentangAppActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun showLogoutConfirmationDialog() {

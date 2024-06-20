@@ -14,6 +14,16 @@ class DetailOrganisasiFikomActivity : AppCompatActivity() {
         binding = ActivityDetailOrganisasiFikomBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+       getDataDetailOrganisasi()
+        binding.ibBack.setOnClickListener {
+            backFromDetail()
+        }
+    }
+
+    private fun backFromDetail() {
+        finish()
+    }
+    private fun getDataDetailOrganisasi() {
         val title = intent.getStringExtra("detailTitle")
         val profil = intent.getStringExtra("profil")
         val logo = intent.getStringExtra("logo")
@@ -21,12 +31,10 @@ class DetailOrganisasiFikomActivity : AppCompatActivity() {
         val image1 = intent.getStringExtra("image1")
         val struktural = intent.getStringExtra("strukturalImage")
         val visiMisi = intent.getStringExtra("visiMisi")
-        val titlePendaftaran = intent.getStringExtra("title")
+
 
         binding.tvTitleOrganisasi.text = title
-        binding.tvProfilLengkap.text = profil
         binding.tvFakultas.text = fakultas
-        binding.tvPendaftaran.text = titlePendaftaran
         Glide.with(this)
             .load(logo)
             .into(binding.imgLogo)
@@ -37,7 +45,11 @@ class DetailOrganisasiFikomActivity : AppCompatActivity() {
             .load(visiMisi)
             .into(binding.imgDetailMisi)
         Glide.with(this)
+            .load(profil)
+            .into(binding.tvProfilLengkap)
+        Glide.with(this)
             .load(struktural)
             .into(binding.imgStrukturalBem)
     }
+
 }

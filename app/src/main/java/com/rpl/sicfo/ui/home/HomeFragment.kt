@@ -28,6 +28,7 @@ import com.rpl.sicfo.data.KlubFikom
 import com.rpl.sicfo.data.Organisasi
 import com.rpl.sicfo.databinding.FragmentHomeBinding
 import com.rpl.sicfo.ui.berita.DetailBeritaKegiatan
+import com.rpl.sicfo.ui.home.pencarian.SearchActivity
 import com.rpl.sicfo.ui.klubFikom.DetailKlubFikomActivity
 import com.rpl.sicfo.ui.notifikasi.NotifikasiActivity
 import com.rpl.sicfo.ui.organisasiFikom.DetailOrganisasiFikomActivity
@@ -109,10 +110,17 @@ class HomeFragment : Fragment(),
         fetchUserFullName()
         fetchDataKlubFromFirebase()
         runNotifikasi()
+        setupSearch()
         fetchUserImage(binding.imgProfile)
         return binding.root
     }
 
+
+    private fun setupSearch() {
+        binding.searchBar.setOnClickListener {
+            startActivity(Intent(requireActivity(), SearchActivity::class.java))
+        }
+    }
 
     private fun runNotifikasi() {
         binding.imgNotifikasi.setOnClickListener {
@@ -243,7 +251,6 @@ class HomeFragment : Fragment(),
                     val image3 = dataSnapshot.child("image3").getValue(String::class.java)
                     val strukturalImage = dataSnapshot.child("strukturalImage").getValue(String::class.java)
                     val visiMisi = dataSnapshot.child("visiMisi").getValue(String::class.java)
-//                    val anggota = dataSnapshot.child("anggota").getValue(String::class.java)
                     val detailTitle = dataSnapshot.child("detailTitle").getValue(String::class.java)
 
                     if (title != null && logo != null && detailTitle != null && fakultas != null) {
@@ -257,7 +264,6 @@ class HomeFragment : Fragment(),
                             image3 = image3 ?: "",
                             strukturalImage = strukturalImage ?: "",
                             visiMisi = visiMisi ?: "",
-//                            anggota = anggota ?: "",
                             detailTitle = detailTitle
                         )
                         organisasiList.add(organisasi)

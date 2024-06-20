@@ -1,49 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cv_item_organisasi_user"
     android:layout_width="match_parent"
-    android:layout_height="90dp"
+    android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:background="@color/light_orange"
-    app:cardCornerRadius="20dp">
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:padding="8dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/img_item_organisasi_user"
-            android:layout_width="90dp"
-            android:layout_height="80dp"
+            android:id="@+id/img_logo_search"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_margin="8dp"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-<!--        <ImageView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_marginTop="30dp"-->
-<!--            android:src="@drawable/grad_berita_organisasi"/>-->
-
         <TextView
-            android:id="@+id/tv_item_name_organisasi_user"
+            android:id="@+id/tv_title_search"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
             android:ellipsize="end"
             android:maxLines="2"
             android:text="Name"
-            android:textSize="15sp"
+            android:textSize="14sp"
             style="@style/textColorTitleOrganisasi"
-            app:layout_constraintBottom_toBottomOf="@+id/img_item_organisasi_user"
+            app:layout_constraintBottom_toBottomOf="@+id/img_logo_search"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toEndOf="@id/img_item_organisasi_user"
-            app:layout_constraintTop_toTopOf="@id/img_item_organisasi_user"
+            app:layout_constraintStart_toEndOf="@id/img_logo_search"
+            app:layout_constraintTop_toTopOf="@id/img_logo_search"
             app:layout_constraintWidth_default="wrap" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

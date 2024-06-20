@@ -14,6 +14,17 @@ class DetailKlubFikomActivity : AppCompatActivity() {
         binding = ActivityDetailKlubFikomBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.ibBack.setOnClickListener {
+            backFromDetailKlub()
+        }
+        getDataKlub()
+    }
+
+    private fun backFromDetailKlub() {
+        finish()
+    }
+
+    private fun getDataKlub() {
         val title = intent.getStringExtra("title")
         val image = intent.getStringExtra("image")
         val image1 = intent.getStringExtra("image1")

@@ -113,8 +113,8 @@
             android:background="@drawable/bg_search"
             android:hint="cari"
             android:textColorHint="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/bg_home_atas"
+            app:layout_constraintStart_toStartOf="@+id/bg_home_atas"
             app:layout_constraintTop_toTopOf="@+id/bg_home_atas" />
 
         <TextView

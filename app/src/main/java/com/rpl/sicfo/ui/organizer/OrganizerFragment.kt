@@ -95,14 +95,37 @@ class OrganizerFragment : Fragment() {
                                 organizationId = dataSnapshot.key
                                 val title = dataSnapshot.child("title").getValue(String::class.java) ?: ""
                                 val logo = dataSnapshot.child("logo").getValue(String::class.java) ?: ""
-                                val profil = dataSnapshot.child("profil").getValue(String::class.java) ?: ""
                                 val fakultas = dataSnapshot.child("fakultas").getValue(String::class.java) ?: ""
-                                val image1 = dataSnapshot.child("image1").getValue(String::class.java) ?: ""
-                                val strukturalImage = dataSnapshot.child("strukturalImage").getValue(String::class.java) ?: ""
-                                val visiMisi = dataSnapshot.child("visiMisi").getValue(String::class.java) ?: ""
-                                val detailTitle = dataSnapshot.child("detailTitle").getValue(String::class.java) ?: ""
 
-                                displayOrganisasiData(title, logo, profil, fakultas, image1, strukturalImage, visiMisi, detailTitle)
+                                // ambil data struktural
+                                val strukturalPath = dataSnapshot.child("struktural")
+                                val ketua = strukturalPath.child("ketua").getValue(String::class.java) ?: ""
+                                val wakilKetua = strukturalPath.child("wakilKetua").getValue(String::class.java) ?: ""
+                                val sekretaris = strukturalPath.child("sekretaris").getValue(String::class.java) ?: ""
+                                val bendahara = strukturalPath.child("bendahara").getValue(String::class.java) ?: ""
+                                val wakilSekretaris = strukturalPath.child("wakilSekretaris").getValue(String::class.java) ?: ""
+
+                                // ambil data teamInternal
+                                val teamInternalPath = dataSnapshot.child("teamInternal")
+                                val ketuaInternal = teamInternalPath.child("ketua").getValue(String::class.java) ?: ""
+                                val anggota1 = teamInternalPath.child("anggota1").getValue(String::class.java) ?: ""
+                                val anggota2 = teamInternalPath.child("anggota2").getValue(String::class.java) ?: ""
+                                val anggota3 = teamInternalPath.child("anggota3").getValue(String::class.java) ?: ""
+                                val anggota4 = teamInternalPath.child("anggota4").getValue(String::class.java) ?: ""
+                                val anggota5 = teamInternalPath.child("anggota5").getValue(String::class.java) ?: ""
+                                val anggota6 = teamInternalPath.child("anggota6").getValue(String::class.java) ?: ""
+                                val anggota7 = teamInternalPath.child("anggota7").getValue(String::class.java) ?: ""
+
+                                // ambil data teamExternal
+                                val teamExternalPath = dataSnapshot.child("teamExternal")
+                                val ketuaExternal = teamExternalPath.child("ketua").getValue(String::class.java) ?: ""
+                                val anggota1_external = teamExternalPath.child("anggota1").getValue(String::class.java) ?: ""
+                                val anggota2_external = teamExternalPath.child("anggota2").getValue(String::class.java) ?: ""
+                                val anggota3_external = teamExternalPath.child("anggota3").getValue(String::class.java) ?: ""
+                                val anggota4_external = teamExternalPath.child("anggota4").getValue(String::class.java) ?: ""
+
+                                displayOrganisasiData(title, logo, fakultas, ketua, wakilKetua, sekretaris, bendahara, wakilSekretaris,ketuaInternal,anggota1,
+                                    anggota2,anggota3,anggota4,anggota5,anggota6,anggota7,ketuaExternal,anggota1_external,anggota2_external,anggota3_external,anggota4_external)
                                 break
                             }
                         }
@@ -119,20 +142,63 @@ class OrganizerFragment : Fragment() {
             }
         })
     }
-
     private fun displayOrganisasiData(
-        title: String, logo: String, profil: String, fakultas: String,
-        image1: String, strukturalImage: String, visiMisi: String, detailTitle: String
+        title: String,
+        logo: String,
+        fakultas: String,
+        ketua: String,
+        wakilKetua: String,
+        sekretaris: String,
+        bendahara: String,
+        wakilSekretaris: String,
+        ketuaInternal : String,
+        anggota1 :String,
+        anggota2:String,
+        anggota3:String,
+        anggota4:String,
+        anggota5:String,
+        anggota6:String,
+        anggota7:String,
+        ketuaExternal:String,
+        anggota1_external:String,
+        anggota2_external:String,
+        anggota3_external:String,
+        anggota4_external:String
     ) {
         binding.root.visibility = View.VISIBLE
         alternateBinding.root.visibility = View.GONE
 
+
+        // data utama organisasi
         binding.tvTitleOrganisasi.text = title
         binding.tvFakultas.text = fakultas
         Glide.with(requireContext()).load(logo).into(binding.imgLogo)
-        Glide.with(requireContext()).load(image1).into(binding.imgDetail1)
-    }
 
+        // data stuktural organisasi
+        binding.tvDescKetua.text = ketua
+        binding.tvDescWakil.text = wakilKetua
+        binding.tvDescSekretaris.text = sekretaris
+        binding.tvDescWakilSekretaris.text = wakilSekretaris
+        binding.tvDescBendahara.text = bendahara
+
+        // data team internal organisasi
+        binding.tvDescKetuaInternal.text = ketuaInternal
+        binding.tvDescAnggota1.text = anggota1
+        binding.tvDescAnggota2.text = anggota2
+        binding.tvDescAnggota3.text = anggota3
+        binding.tvDescAnggota4.text = anggota4
+        binding.tvDescAnggota5.text = anggota5
+        binding.tvDescAnggota6.text = anggota6
+        binding.tvDescAnggota7.text = anggota7
+
+        // ambil data external organisasi
+        binding.tvDescKetuaExternal.text = ketuaExternal
+        binding.tvDescAnggota1Exteral.text = anggota1_external
+        binding.tvDescAnggota2Exteral.text = anggota2_external
+        binding.tvDescAnggota3Exteral.text = anggota3_external
+        binding.tvDescAnggota4Exteral.text = anggota4_external
+
+    }
     private fun displayAlternateLayout() {
         binding.root.visibility = View.GONE
         alternateBinding.root.visibility = View.VISIBLE
