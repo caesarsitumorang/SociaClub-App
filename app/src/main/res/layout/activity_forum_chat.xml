@@ -14,12 +14,21 @@
         android:padding="8dp"
         android:background="@color/orange">
 
-        <TextView
-            android:id="@+id/tvChatName"
+        <ImageView
+            android:id="@+id/backtoOrganizer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Forum Diskusi"
+            android:src="@drawable/back"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:id="@+id/tvChatName"
             style="@style/textColorTitleUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/backtoOrganizer"
+            android:text="Forum Diskusi"
             android:textSize="18sp" />
 
     </RelativeLayout>

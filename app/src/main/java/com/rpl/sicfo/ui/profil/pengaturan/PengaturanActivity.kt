@@ -2,7 +2,6 @@ package com.rpl.sicfo.ui.profil.pengaturan
 
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
@@ -10,6 +9,8 @@ import android.text.style.ImageSpan
 import android.text.style.TextAppearanceSpan
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -21,7 +22,6 @@ import com.rpl.sicfo.R
 import com.rpl.sicfo.databinding.ActivityPengaturanBinding
 import com.rpl.sicfo.ui.login.LoginActivity
 import com.rpl.sicfo.ui.tentang.TentangAppActivity
-
 
 class PengaturanActivity : AppCompatActivity() {
 
@@ -35,6 +35,10 @@ class PengaturanActivity : AppCompatActivity() {
     private lateinit var tvSemester: TextView
     private lateinit var tvProdi: TextView
     private lateinit var tvAlamat: TextView
+
+    private val THEME_PREF = "theme_pref"
+    private val THEME_LIGHT = "light"
+    private val THEME_DARK = "dark"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,13 +58,49 @@ class PengaturanActivity : AppCompatActivity() {
         setupToolbar()
         onClickKeluar()
         fetchUserData()
-        binding.viewTentang.setOnClickListener{
+        binding.viewTentang.setOnClickListener {
             onClickTentangApp()
         }
 
         binding.btnEdit.setOnClickListener {
             navigateToEditAkun()
         }
+
+        binding.btnDarkMode.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                setThemeMode(THEME_DARK)
+            } else {
+                setThemeMode(THEME_LIGHT)
+            }
+        }
+
+        // Initialize and apply theme
+        applyTheme()
+    }
+
+    private fun setThemeMode(themeMode: String) {
+        when (themeMode) {
+            THEME_LIGHT -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                saveThemePreference(THEME_LIGHT)
+            }
+            THEME_DARK -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                saveThemePreference(THEME_DARK)
+            }
+        }
+    }
+
+    private fun saveThemePreference(themeMode: String) {
+        val editor = sharedPreferences.edit()
+        editor.putString(THEME_PREF, themeMode)
+        editor.apply()
+    }
+
+    private fun applyTheme() {
+        val savedTheme = sharedPreferences.getString(THEME_PREF, THEME_LIGHT)
+        setThemeMode(savedTheme ?: THEME_LIGHT)
+        binding.btnDarkMode.isChecked = savedTheme == THEME_DARK
     }
 
     private fun setupToolbar() {
@@ -70,7 +110,12 @@ class PengaturanActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
         val title = "Pengaturan"
         val spannableTitle = SpannableString(title)
-        spannableTitle.setSpan(TextAppearanceSpan(this, R.style.textColorTitleWelcome), 0, title.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableTitle.setSpan(
+            TextAppearanceSpan(this, R.style.textColorTitleWelcome),
+            0,
+            title.length,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
         supportActionBar?.title = spannableTitle
         val backIcon = ContextCompat.getDrawable(this, R.drawable.back)
         backIcon?.let {
@@ -91,7 +136,7 @@ class PengaturanActivity : AppCompatActivity() {
         }
     }
 
-    private fun onClickTentangApp(){
+    private fun onClickTentangApp() {
         val intent = Intent(this, TentangAppActivity::class.java)
         startActivity(intent)
         finish()

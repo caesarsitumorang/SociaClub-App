@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="title"
-                style="@style/textColorTitleUsername"
+                style="@style/textColorTitleBerita"
                 android:textSize="15sp"
                 android:maxLines="2"
                 android:ellipsize="end"

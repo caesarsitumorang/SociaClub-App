@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.voting.detailVoting.TotalVotingActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/orange"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/appBar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="#00000000"
+                app:titleTextColor="@color/white"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <!-- Item 1 Votes -->
+        <LinearLayout
+            android:id="@+id/item1Layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+
+            <!-- Foto -->
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/avatar" />
+
+            <!-- Nama Ketua -->
+            <TextView
+                android:id="@+id/namaKetua1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Nama Ketua 1"
+                style="@style/textColorTitleOrganisasi"
+                android:textSize="18sp" />
+
+            <!-- Nama Wakil Ketua -->
+            <TextView
+                android:id="@+id/namaWakilKetua1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                style="@style/textColorTitleOrganizer"
+                android:text="Nama Wakil Ketua 1"
+                android:textSize="16sp" />
+
+            <!-- Nama Sekretaris -->
+            <TextView
+                android:id="@+id/namaSekretaris1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Nama Sekretaris 1"
+                style="@style/textColorTitleOrganizer"
+                android:textSize="16sp" />
+
+            <!-- Total Suara untuk Item 1 -->
+            <TextView
+                android:id="@+id/item1VotesTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Calon 1 Votes: 0"
+                android:textSize="18sp"
+                android:background="@drawable/border_rectangle"
+                style="@style/textColorTitleOrganisasi"
+                android:gravity="center"
+                android:textColor="@android:color/black" />
+
+        </LinearLayout>
+
+        <!-- Item 2 Votes -->
+        <LinearLayout
+            android:id="@+id/item2Layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item1Layout">
+
+            <!-- Foto -->
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/avatar"
+                android:scaleType="centerCrop"/>
+
+            <!-- Nama Ketua -->
+            <TextView
+                android:id="@+id/namaKetua2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Ketua 2"
+                android:textSize="18sp"
+                style="@style/textColorTitleOrganisasi"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="8dp"/>
+
+            <!-- Nama Wakil Ketua -->
+            <TextView
+                android:id="@+id/namaWakilKetua2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Wakil Ketua 2"
+                android:textSize="16sp"
+                style="@style/textColorTitleOrganizer"
+                android:layout_marginTop="4dp"/>
+
+            <!-- Nama Sekretaris -->
+            <TextView
+                android:id="@+id/namaSekretaris2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Sekretaris 2"
+                android:textSize="16sp"
+                style="@style/textColorTitleOrganizer"
+                android:layout_marginTop="4dp"/>
+
+            <!-- Total Suara untuk Item 2 -->
+            <TextView
+                android:id="@+id/item2VotesTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Calon 2 Votes: 0"
+                android:textSize="18sp"
+                android:background="@drawable/border_rectangle"
+                style="@style/textColorTitleOrganisasi"
+                android:gravity="center"
+                android:textColor="@android:color/black" />
+
+        </LinearLayout>
+
+        <!-- Item 3 Votes -->
+        <LinearLayout
+            android:id="@+id/item3Layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item2Layout">
+
+            <!-- Foto -->
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/avatar"
+                android:scaleType="centerCrop"/>
+
+            <!-- Nama Ketua -->
+            <TextView
+                android:id="@+id/namaKetua3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Ketua 3"
+                android:textSize="18sp"
+                style="@style/textColorTitleOrganisasi"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="8dp"/>
+
+            <!-- Nama Wakil Ketua -->
+            <TextView
+                android:id="@+id/namaWakilKetua3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Wakil Ketua 3"
+                android:textSize="16sp"
+                style="@style/textColorTitleOrganizer"
+                android:layout_marginTop="4dp"/>
+
+            <!-- Nama Sekretaris -->
+            <TextView
+                android:id="@+id/namaSekretaris3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Sekretaris 3"
+                android:textSize="16sp"
+                style="@style/textColorTitleOrganizer"
+                android:layout_marginTop="4dp"/>
+
+            <!-- Total Suara untuk Item 3 -->
+            <TextView
+                android:id="@+id/item3VotesTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Calon 3 Votes: 0"
+                android:textSize="18sp"
+                android:background="@drawable/border_rectangle"
+                style="@style/textColorTitleOrganisasi"
+                android:gravity="center"
+                android:textColor="@android:color/black" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

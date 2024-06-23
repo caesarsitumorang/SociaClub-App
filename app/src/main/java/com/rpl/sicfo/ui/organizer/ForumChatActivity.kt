@@ -42,8 +42,14 @@ class ForumChatActivity : AppCompatActivity() {
         binding.btnSendMessage.setOnClickListener {
             sendMessage()
         }
-
+        binding.backtoOrganizer.setOnClickListener {
+            backToOrganizer()
+        }
         fetchUsernameAndMessages()
+    }
+
+    private fun backToOrganizer() {
+        finish()
     }
 
     private fun setupRecyclerView() {

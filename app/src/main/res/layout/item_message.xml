@@ -12,18 +12,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="11sp"
-        style="@style/textColorTitleUsernameChat"
+        style="@style/textColorTitleChat"
         android:layout_marginBottom="2dp"
-        android:gravity="end" />
+    android:gravity="end" /> <!-- Untuk pesan dari pengguna aplikasi, gunakan gravity "end" -->
 
     <TextView
         android:id="@+id/tvMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:background="@drawable/gradient_background"
-        style="@style/textColorTitleOrganizer"
+        android:background="@drawable/bg_chat_user"
+        style="@style/textColorTitleChat"
         android:padding="8dp"
-        android:gravity="start" />
+        android:gravity="start" /> <!-- Untuk pesan dari akun lain, gunakan gravity "start" -->
 
 </LinearLayout>

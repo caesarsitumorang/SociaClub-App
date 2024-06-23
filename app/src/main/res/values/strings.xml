@@ -6,4 +6,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="start">Start</string>
     <string name="selanjutnya">Selanjutnya</string>
+    <string-array name="jurusan_array">
+        <item>Sistem Informasi</item>
+        <item>Teknik Informatika</item>
+        <item>Data Sains</item>
+    </string-array>
 </resources>

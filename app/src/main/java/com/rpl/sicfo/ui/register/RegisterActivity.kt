@@ -5,6 +5,8 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -16,6 +18,8 @@ import com.rpl.sicfo.R
 import com.rpl.sicfo.databinding.ActivityRegisterBinding
 import com.rpl.sicfo.ui.welcome.WelcomeActivity
 import com.rpl.sicfo.MainActivity
+import com.rpl.sicfo.ui.costumView.ButtonLogin
+import com.rpl.sicfo.ui.costumView.ButtonRegister
 import com.rpl.sicfo.ui.login.LoginActivity
 
 class RegisterActivity : AppCompatActivity() {
@@ -23,6 +27,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var database: FirebaseDatabase
     private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var buttonRegister: ButtonRegister
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +52,34 @@ class RegisterActivity : AppCompatActivity() {
             showLoading(true)
             registerFirebase(namaLengkap, npm, email, password)
         }
+
+        binding.apply {
+            buttonRegister = btRegis
+            buttonRegister.isEnabled = false
+
+            edemailRegister.addTextChangedListener(loginTextWatcher)
+            ednamaRegister.addTextChangedListener(loginTextWatcher)
+            ednpmRegister.addTextChangedListener(loginTextWatcher)
+            edpasswordRegister.addTextChangedListener(loginTextWatcher)
+            icPasswordToggle.setOnClickListener { togglePasswordVisibility() }
+        }
     }
+
+    private val loginTextWatcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            val emailInput = binding.edemailRegister.text.toString().trim()
+            val namaLengkap = binding.ednamaRegister.text.toString().trim()
+            val npmInput = binding.ednpmRegister.text.toString().trim()
+            val passwordInput = binding.edpasswordRegister.text.toString().trim()
+
+            buttonRegister.isEnabled = emailInput.isNotEmpty()  && namaLengkap.isNotEmpty() && npmInput.isNotEmpty() && passwordInput.isNotEmpty()
+        }
+
+        override fun afterTextChanged(s: Editable?) {}
+    }
+
 
     private fun registerFirebase(namaLengkap: String, npm: String, email: String, password: String) {
         auth.createUserWithEmailAndPassword("$npm@domain.com", password)
@@ -92,6 +124,19 @@ class RegisterActivity : AppCompatActivity() {
                     Toast.makeText(this, "Register gagal: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
+    }
+
+    private fun togglePasswordVisibility() {
+        val passwordEditText = binding.edpasswordRegister
+        val passwordToggle = binding.icPasswordToggle
+        if (passwordEditText.inputType == 129) { // InputType.TYPE_TEXT_VARIATION_PASSWORD
+            passwordEditText.inputType = 1 // InputType.TYPE_CLASS_TEXT
+            passwordToggle.setImageResource(R.drawable.ic_password_visible)
+        } else {
+            passwordEditText.inputType = 129 // InputType.TYPE_TEXT_VARIATION_PASSWORD
+            passwordToggle.setImageResource(R.drawable.ic_password)
+        }
+        passwordEditText.setSelection(passwordEditText.text!!.length)
     }
 
     private fun showLoading(isLoading: Boolean) {

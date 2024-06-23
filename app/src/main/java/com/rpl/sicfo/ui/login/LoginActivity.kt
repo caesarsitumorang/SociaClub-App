@@ -5,6 +5,8 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
@@ -13,6 +15,7 @@ import com.google.firebase.ktx.Firebase
 import com.rpl.sicfo.MainActivity
 import com.rpl.sicfo.R
 import com.rpl.sicfo.databinding.ActivityLoginBinding
+import com.rpl.sicfo.ui.costumView.ButtonLogin
 import com.rpl.sicfo.ui.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
@@ -20,6 +23,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var auth: FirebaseAuth
+    private lateinit var buttonLogin: ButtonLogin
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +51,28 @@ class LoginActivity : AppCompatActivity() {
             showLoading(true)
             loginUser(npm, password)
         }
+
+        binding.apply {
+            buttonLogin = btLogin
+            buttonLogin.isEnabled = false
+
+            ednpmLogin.addTextChangedListener(loginTextWatcher)
+            edpasswordLogin.addTextChangedListener(loginTextWatcher)
+            icPasswordToggle.setOnClickListener { togglePasswordVisibility() }
+        }
+    }
+
+    private val loginTextWatcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            val npmInput = binding.ednpmLogin.text.toString().trim()
+            val passwordInput = binding.edpasswordLogin.text.toString().trim()
+
+            buttonLogin.isEnabled = npmInput.isNotEmpty() && passwordInput.isNotEmpty()
+        }
+
+        override fun afterTextChanged(s: Editable?) {}
     }
 
     private fun loginUser(npm: String, password: String) {
@@ -74,6 +100,19 @@ class LoginActivity : AppCompatActivity() {
                     ).show()
                 }
             }
+    }
+
+    private fun togglePasswordVisibility() {
+        val passwordEditText = binding.edpasswordLogin
+        val passwordToggle = binding.icPasswordToggle
+        if (passwordEditText.inputType == 129) { // InputType.TYPE_TEXT_VARIATION_PASSWORD
+            passwordEditText.inputType = 1 // InputType.TYPE_CLASS_TEXT
+            passwordToggle.setImageResource(R.drawable.ic_password_visible)
+        } else {
+            passwordEditText.inputType = 129 // InputType.TYPE_TEXT_VARIATION_PASSWORD
+            passwordToggle.setImageResource(R.drawable.ic_password)
+        }
+        passwordEditText.setSelection(passwordEditText.text!!.length)
     }
 
     private fun navigateToMainActivity() {

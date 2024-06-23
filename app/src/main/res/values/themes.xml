@@ -11,6 +11,11 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="textColorTitleLogin">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textColor">@color/blue</item>
+    </style>
+
     <style name="textColorTitleOrganisasi">
         <item name="android:fontFamily">@font/poppins_medium</item>
         <item name="android:textColor">@color/black</item>
@@ -21,6 +26,10 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="textColorTitleChat">
+        <item name="android:fontFamily">@font/poppins_light</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
 
     <style name="textColorTitleOrganizer">
         <item name="android:fontFamily">@font/poppins_light</item>
@@ -35,6 +44,11 @@
     <style name="textColorTitleHome">
         <item name="android:fontFamily">@font/poppins_bold</item>
         <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="textColorTitleBerita">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="textColorTitleWelcome">
