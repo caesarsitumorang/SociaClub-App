@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
@@ -42,13 +41,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
 
-            <!-- Foto -->
+
             <ImageView
                 android:id="@+id/imageView1"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/avatar" />
+                android:src="@drawable/nomor1" />
 
             <!-- Nama Ketua -->
             <TextView
@@ -56,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Nama Ketua 1"
+                android:text="Agus Handoko (KETUA) "
                 style="@style/textColorTitleOrganisasi"
                 android:textSize="18sp" />
 
@@ -66,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="Nama Wakil Ketua 1"
+                android:text="Tukasim Simanjuntak (WAKIL KETUA)"
                 style="@style/textColorTitleOrganizer"
                 android:textSize="16sp" />
 
@@ -76,7 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="Nama Sekretaris 1"
+                android:text="Haryanto Simbolon (Sekretaris)"
                 style="@style/textColorTitleOrganizer"
                 android:textSize="16sp" />
 
@@ -108,7 +107,7 @@
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:src="@drawable/avatar"
+            android:src="@drawable/nomor2"
             android:scaleType="centerCrop"/>
 
         <!-- Nama Ketua -->
@@ -116,7 +115,7 @@
             android:id="@+id/namaKetua2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nama Ketua 2"
+            android:text="Agus Handoko (KETUA) "
             android:textSize="18sp"
             android:textColor="@android:color/black"
             android:layout_marginTop="8dp"/>
@@ -126,7 +125,7 @@
             android:id="@+id/namaWakilKetua2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nama Wakil Ketua 2"
+            android:text="Yuzhong Sihombing (WAKIL KETUA)"
             android:textSize="16sp"
             style="@style/textColorTitleOrganizer"
             android:layout_marginTop="4dp"/>
@@ -136,7 +135,7 @@
             android:id="@+id/namaSekretaris2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nama Sekretaris 2"
+            android:text="Beatrix Situmorang (Sekretaris)"
             android:textSize="16sp"
             style="@style/textColorTitleOrganizer"
             android:layout_marginTop="4dp"/>
@@ -169,7 +168,7 @@
             android:id="@+id/imageView3"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:src="@drawable/avatar"
+            android:src="@drawable/nomor3"
             android:scaleType="centerCrop"/>
 
         <!-- Nama Ketua -->
@@ -177,7 +176,7 @@
             android:id="@+id/namaKetua3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nama Ketua 3"
+            android:text="Budi Jeremi Purba (KETUA) "
             android:textSize="18sp"
             android:textColor="@android:color/black"
             android:layout_marginTop="8dp"/>
@@ -187,7 +186,7 @@
             android:id="@+id/namaWakilKetua3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nama Wakil Ketua 3"
+            android:text="Sangguan HumaHorbo (WAKIL KETUA)"
             android:textSize="16sp"
             style="@style/textColorTitleOrganizer"
             android:layout_marginTop="4dp"/>
@@ -197,7 +196,7 @@
             android:id="@+id/namaSekretaris3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nama Sekretaris 3"
+            android:text="Ireng Hitam  (Sekretaris)"
             android:textSize="16sp"
             style="@style/textColorTitleOrganizer"
             android:layout_marginTop="4dp"/>

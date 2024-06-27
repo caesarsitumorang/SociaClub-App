@@ -1,22 +1,28 @@
 package com.rpl.sicfo.ui.organizer
 
+import android.app.AlertDialog
+import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import com.rpl.sicfo.adapter.MessageAdapter
 import com.rpl.sicfo.data.Message
 import com.rpl.sicfo.databinding.ActivityForumChatBinding
+import com.rpl.sicfo.ui.profil.ButtonSheetPicture
 import java.util.*
 
-class ForumChatActivity : AppCompatActivity() {
+class ForumChatActivity : AppCompatActivity(), ButtonSheetPicture.OnImageSelectedListener {
 
     private lateinit var binding: ActivityForumChatBinding
     private lateinit var database: DatabaseReference
     private lateinit var auth: FirebaseAuth
+    private lateinit var storageReference: StorageReference
     private lateinit var messageAdapter: MessageAdapter
     private val messageList: MutableList<Message> = mutableListOf()
     private var organizationId: String? = null
@@ -27,6 +33,7 @@ class ForumChatActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
+        storageReference = FirebaseStorage.getInstance().reference.child("imageChat")
 
         organizationId = intent.getStringExtra("organizationId")
         if (organizationId == null) {
@@ -45,6 +52,10 @@ class ForumChatActivity : AppCompatActivity() {
         binding.backtoOrganizer.setOnClickListener {
             backToOrganizer()
         }
+        binding.btnUploadImage.setOnClickListener {
+            showImagePicker()
+        }
+
         fetchUsernameAndMessages()
     }
 
@@ -60,14 +71,14 @@ class ForumChatActivity : AppCompatActivity() {
         }
     }
 
-    private fun sendMessage() {
+    private fun sendMessage(imageUrl: String? = null) {
         val currentUser = auth.currentUser
         val messageText = binding.etMessage.text.toString().trim()
 
-        if (messageText.isNotEmpty() && currentUser != null) {
+        if ((messageText.isNotEmpty() || imageUrl != null) && currentUser != null) {
             fetchUsername(currentUser.uid) { username ->
                 if (username.isNotEmpty()) {
-                    val message = Message(currentUser.uid, username, messageText, Date().time)
+                    val message = Message(currentUser.uid, username, messageText, imageUrl, Date().time)
                     val messageRef = database.push()
                     messageRef.setValue(message)
                         .addOnSuccessListener {
@@ -105,7 +116,7 @@ class ForumChatActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-//                Toast.makeText(this@ForumChatActivity, "Failed to load messages: ${error.message}", Toast.LENGTH_SHORT).show()
+                // Toast.makeText(this@ForumChatActivity, "Failed to load messages: ${error.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -115,12 +126,53 @@ class ForumChatActivity : AppCompatActivity() {
         usersRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val username = snapshot.child("namaLengkap").getValue(String::class.java) ?: ""
-                callback(username)
+                val kataPertama = username.split(" ")[0]
+                callback(kataPertama)
             }
 
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(this@ForumChatActivity, "Failed to fetch username: ${error.message}", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    private fun showImagePicker() {
+        val buttonSheetPicture = ButtonSheetPicture()
+        buttonSheetPicture.setOnImageSelectedListener(this)
+        buttonSheetPicture.show(supportFragmentManager, ButtonSheetPicture.TAG)
+    }
+
+    override fun onImageSelected(uri: Uri) {
+        showConfirmationDialog(uri)
+    }
+
+    private fun showConfirmationDialog(uri: Uri) {
+        AlertDialog.Builder(this)
+            .setTitle("Kirim Gambar")
+            .setMessage("Kamu Yakin Ingin Mengirim Foto Ini?")
+            .setPositiveButton("Kirim") { _, _ -> uploadImage(uri) }
+            .setNegativeButton("Batal", null)
+            .show()
+    }
+
+    private fun uploadImage(uri: Uri) {
+        binding.progressBar.visibility = View.VISIBLE
+        val fileName = UUID.randomUUID().toString()
+        val imageRef = storageReference.child("$fileName.jpg")
+
+        imageRef.putFile(uri)
+            .addOnSuccessListener {
+                imageRef.downloadUrl.addOnSuccessListener { downloadUrl ->
+                    sendMessage(downloadUrl.toString())
+                    binding.progressBar.visibility = View.GONE
+                }.addOnFailureListener { e ->
+                    Toast.makeText(this, "Failed to get download URL: ${e.message}", Toast.LENGTH_SHORT).show()
+                    binding.progressBar.visibility = View.GONE
+                }
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "Failed to upload image: ${e.message}", Toast.LENGTH_SHORT).show()
+                binding.progressBar.visibility = View.GONE
+            }
     }
 }

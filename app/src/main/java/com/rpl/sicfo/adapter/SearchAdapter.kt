@@ -34,7 +34,7 @@ class SearchAdapter(
                 is KlubFikom -> {
                     binding.tvTitleSearch.text = item.title
                     Glide.with(binding.root.context)
-                        .load(item.image)
+                        .load(item.logo)
                         .into(binding.imgLogoSearch)
 
                     binding.root.setOnClickListener {

@@ -52,6 +52,11 @@ class LoginActivity : AppCompatActivity() {
             loginUser(npm, password)
         }
 
+        binding.tvForgotPassword.setOnClickListener {
+            startActivity(Intent(this, LupaPasswordActivity::class.java))
+        }
+
+
         binding.apply {
             buttonLogin = btLogin
             buttonLogin.isEnabled = false

@@ -29,27 +29,4 @@
 
     </LinearLayout>
 
-    <LinearLayout
-       android:id="@+id/btn_Camera"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="16dp"
-        android:paddingVertical="8dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/camera"
-            app:tint="@color/orange"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pilih dari Kamera"
-            android:textSize="16sp"
-            android:layout_marginStart="16dp"/>
-
-    </LinearLayout>
-
 </LinearLayout>

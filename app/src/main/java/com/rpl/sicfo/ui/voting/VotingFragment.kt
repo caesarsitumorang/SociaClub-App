@@ -63,10 +63,11 @@ class VotingFragment : Fragment(), OrganisasiFikomAdapter.OnItemClickListener, P
     private fun setupRVPendaftaran() {
         pendaftaranAdapter = PendaftaranAdapter(dataList, this)
         val layoutManagerPendaftaran =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.rvPendaftaran.layoutManager = layoutManagerPendaftaran
         binding.rvPendaftaran.adapter = pendaftaranAdapter
     }
+
 
     private fun fetchDataFromFirebase() {
         fetchOrganisasiDataFromFirebase()
@@ -80,7 +81,7 @@ class VotingFragment : Fragment(), OrganisasiFikomAdapter.OnItemClickListener, P
                 for (dataSnapshot in snapshot.children) {
                     val title = dataSnapshot.child("title").getValue(String::class.java)
                     val logo = dataSnapshot.child("logo").getValue(String::class.java)
-                    val profil = dataSnapshot.child("profil").getValue(String::class.java)
+                    val profil = dataSnapshot.child("detailProfil").getValue(String::class.java)
                     val fakultas = dataSnapshot.child("fakultas").getValue(String::class.java)
                     val image1 = dataSnapshot.child("image1").getValue(String::class.java)
                     val image2 = dataSnapshot.child("image2").getValue(String::class.java)
@@ -94,7 +95,7 @@ class VotingFragment : Fragment(), OrganisasiFikomAdapter.OnItemClickListener, P
                         val organisasi = Organisasi(
                             title = title,
                             logo = logo,
-                            profil = profil ?: "",
+                            detailProfil = profil ?: "",
                             fakultas = fakultas,
                             image1 = image1 ?: "",
                             image2 = image2 ?: "",
@@ -124,12 +125,56 @@ class VotingFragment : Fragment(), OrganisasiFikomAdapter.OnItemClickListener, P
                 klubList.clear()
                 for (dataSnapshot in snapshot.children) {
                     val title = dataSnapshot.child("title").getValue(String::class.java)
-                    val imageUrl = dataSnapshot.child("image").getValue(String::class.java)
+                    val logo = dataSnapshot.child("logo").getValue(String::class.java)
+                    val detailProfil = dataSnapshot.child("detailProfil").getValue(String::class.java)
+                    val visiMisi = dataSnapshot.child("visiMisi").getValue(String::class.java)
+                    val strukturalImage = dataSnapshot.child("strukturalImage").getValue(String::class.java)
+                    val detailTitle = dataSnapshot.child("detailTitle").getValue(String::class.java)
+                    val fakultas = dataSnapshot.child("fakultas").getValue(String::class.java)
                     val image1 = dataSnapshot.child("image1").getValue(String::class.java)
-                    if (title != null && imageUrl != null && image1 != null) {
-                        val klub = KlubFikom(title, imageUrl, image1)
-//                        klubList.add(klub)
-//                        dataList.add(klub) // Tambahkan ke dataList untuk pendaftaran
+                    val image2 = dataSnapshot.child("image2").getValue(String::class.java)
+                    val image3 = dataSnapshot.child("image3").getValue(String::class.java)
+                    val tvAjakanProfil = dataSnapshot.child("tvAjakanProfil").getValue(String::class.java)
+                    val tvDetailVisi = dataSnapshot.child("tvDetailVisi").getValue(String::class.java)
+                    val tvDetailMisi1 = dataSnapshot.child("tvDetailMisi1").getValue(String::class.java)
+                    val tvDetailMisi2 = dataSnapshot.child("tvDetailMisi2").getValue(String::class.java)
+                    val tvDetailMisi3 = dataSnapshot.child("tvDetailMisi3").getValue(String::class.java)
+                    val tvDetailMisi4 = dataSnapshot.child("tvDetailMisi4").getValue(String::class.java)
+                    val tvDetailMisi5 = dataSnapshot.child("tvDetailMisi5").getValue(String::class.java)
+                    val tvProfil1 = dataSnapshot.child("tvProfil1").getValue(String::class.java)
+                    val tvProfil2 = dataSnapshot.child("tvProfil2").getValue(String::class.java)
+                    val tvProfil3 = dataSnapshot.child("tvProfil3").getValue(String::class.java)
+                    val tvProfil4 = dataSnapshot.child("tvProfil4").getValue(String::class.java)
+                    val tvProfil5 = dataSnapshot.child("tvProfil5").getValue(String::class.java)
+
+
+                    if (title != null && logo != null && fakultas != null ) {
+                        val klub = KlubFikom(
+                            title = title,
+                            logo = logo,
+                            detailProfil = detailProfil ?: "",
+                            visiMisi = visiMisi ?: "",
+                            strukturalImage = strukturalImage ?: "",
+                            detailTitle = detailTitle ?: "",
+                            fakultas = fakultas,
+                            image1 = image1 ?: "",
+                            image2 = image2 ?: "",
+                            image3 = image3 ?: "",
+                            tvAjakanProfil = tvAjakanProfil ?: "",
+                            tvDetailVisi = tvDetailVisi ?: "",
+                            tvDetailMisi1 = tvDetailMisi1 ?: "",
+                            tvDetailMisi2 = tvDetailMisi2 ?: "",
+                            tvDetailMisi3 = tvDetailMisi3 ?: "",
+                            tvDetailMisi4 = tvDetailMisi4 ?: "",
+                            tvDetailMisi5 = tvDetailMisi5 ?: "",
+                            tvProfil1 = tvProfil1 ?: "",
+                            tvProfil2 = tvProfil2 ?: "",
+                            tvProfil3 = tvProfil3 ?: "",
+                            tvProfil4 = tvProfil4 ?: "",
+                            tvProfil5 = tvProfil5 ?: ""
+                        )
+                        klubList.add(klub)
+                        dataList.add(klub) // Tambahkan ke dataList untuk pendaftaran
                     }
                 }
                 Log.d("VotingFragment", "Total klub: ${klubList.size}")
@@ -142,11 +187,25 @@ class VotingFragment : Fragment(), OrganisasiFikomAdapter.OnItemClickListener, P
         })
     }
 
+
     override fun onItemClick(item: Any) {
-        if (item is Organisasi) {
-            val intent = Intent(context, PendaftaranActivity::class.java)
-            intent.putExtra("organisasi_title", item.title)
-            startActivity(intent)
+        when (item) {
+            is Organisasi -> {
+                val intent = Intent(context, PendaftaranActivity::class.java)
+                intent.putExtra("organisasi_title", item.title)
+                intent.putExtra("logo_organisasi", item.logo)
+                startActivity(intent)
+            }
+            is KlubFikom -> {
+                val intent = Intent(context, PendaftaranActivity::class.java)
+                intent.putExtra("organisasi_title", item.title)
+                intent.putExtra("logo_organisasi", item.logo)
+                startActivity(intent)
+            }
+            else -> {
+                // Handle jika tipe item tidak dikenali
+                Log.e("VotingFragment", "Unknown item type clicked: ${item.javaClass.simpleName}")
+            }
         }
     }
 

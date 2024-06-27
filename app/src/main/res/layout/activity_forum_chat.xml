@@ -33,16 +33,31 @@
 
     </RelativeLayout>
 
-    <!-- RecyclerView for displaying messages -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvMessages"
+    <!-- FrameLayout to hold RecyclerView and ProgressBar -->
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@android:color/white"
-        android:clipToPadding="false"
-        android:padding="8dp"
-        tools:listitem="@layout/item_message" />
+        android:layout_weight="1">
+
+        <!-- RecyclerView for displaying messages -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMessages"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:clipToPadding="false"
+            android:padding="8dp"
+            tools:listitem="@layout/item_message" />
+
+        <!-- Centered ProgressBar -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_gravity="center" />
+
+    </FrameLayout>
 
     <!-- Input message layout -->
     <LinearLayout
@@ -66,13 +81,23 @@
             android:layout_marginEnd="8dp" />
 
         <ImageButton
+            android:id="@+id/btnUploadImage"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_send_button"
+            android:padding="12dp"
+            android:src="@drawable/ic_upload"
+            android:contentDescription="Send Message"
+            android:elevation="4dp" />
+
+        <ImageButton
             android:id="@+id/btnSendMessage"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@drawable/bg_send_button"
             android:padding="12dp"
             android:src="@drawable/ic_send"
-            android:contentDescription="Send Message"
+            android:contentDescription="Upload Image"
             android:elevation="4dp" />
 
     </LinearLayout>

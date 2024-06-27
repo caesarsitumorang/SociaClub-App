@@ -34,7 +34,7 @@ class PendaftaranAdapter(
                 is KlubFikom -> {
                     binding.tvTitleSearch.text = item.title
                     Glide.with(binding.root.context)
-                        .load(item.image)
+                        .load(item.logo)
                         .into(binding.imgLogoPendaftaran)
 
                     binding.root.setOnClickListener {

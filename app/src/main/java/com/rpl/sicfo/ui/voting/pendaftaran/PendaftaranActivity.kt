@@ -1,5 +1,6 @@
 package com.rpl.sicfo.ui.voting.pendaftaran
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
@@ -15,7 +16,11 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.rpl.sicfo.R
 import com.rpl.sicfo.databinding.ActivityPendaftaranBinding
+import com.rpl.sicfo.ui.notifikasi.NotifikasiActivity
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 
 class PendaftaranActivity : AppCompatActivity() {
 
@@ -92,33 +97,46 @@ class PendaftaranActivity : AppCompatActivity() {
 
     private fun registerMember() {
         binding.btnSubmit.setOnClickListener {
-
-            // Retrieve data from input fields
             val namaLengkap = binding.etNama.text.toString().trim()
             val npm = binding.etNpm.text.toString().trim()
             val jurusan = binding.spinnerJurusan.selectedItem.toString().trim()
             val tahunMasuk = binding.spinnerTahunMasuk.selectedItem.toString().trim()
             val organisasiTitle = intent.getStringExtra("organisasi_title")
+            val organisasiLogo = intent.getStringExtra("logo_organisasi")
 
             if (namaLengkap.isNotEmpty() && npm.isNotEmpty() && jurusan.isNotEmpty() && tahunMasuk.isNotEmpty() && organisasiTitle != null) {
                 val newPendaftarRef = database.child("DaftarPendaftar").child(organisasiTitle).child(npm)
 
-                // Data to be stored
                 val pendaftarData = hashMapOf(
                     "namaLengkap" to namaLengkap,
                     "npm" to npm,
                     "jurusan" to jurusan,
-                    "tahunMasuk" to tahunMasuk
+                    "tahunMasuk" to tahunMasuk,
+                    "logo" to organisasiLogo
                 )
 
                 newPendaftarRef.setValue(pendaftarData)
                     .addOnSuccessListener {
-                        // Handle success
                         Toast.makeText(this, "Pendaftaran berhasil!", Toast.LENGTH_SHORT).show()
-                        finish() // Close activity after successful registration
+
+                        val currentTime = SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault()).format(Date())
+
+                        val notificationRef = database.child("Notifikasi").child(npm).push()
+                        val notificationData = hashMapOf(
+                            "message" to "Pendaftaran berhasil untuk $organisasiTitle",
+                            "timestamp" to currentTime,
+                            "logo" to organisasiLogo
+                        )
+                        notificationRef.setValue(notificationData)
+
+                        val notificationIntent = Intent(this, NotifikasiActivity::class.java).apply {
+                            putExtra("notification_message", "Pendaftaran berhasil untuk $organisasiTitle")
+                            putExtra("notification_time", currentTime)
+                        }
+                        startActivity(notificationIntent)
+                        finish()
                     }
                     .addOnFailureListener { e ->
-                        // Handle failure
                         Toast.makeText(this, "Pendaftaran gagal: ${e.message}", Toast.LENGTH_SHORT).show()
                     }
             } else {

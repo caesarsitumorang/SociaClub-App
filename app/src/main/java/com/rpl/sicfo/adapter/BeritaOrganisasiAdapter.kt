@@ -20,7 +20,6 @@ class BeritaOrganisasiAdapter(
         return BeritaViewHolder(view)
     }
 
-
     override fun onBindViewHolder(holder: BeritaViewHolder, position: Int) {
         val berita = beritaList[position]
         holder.bind(berita)

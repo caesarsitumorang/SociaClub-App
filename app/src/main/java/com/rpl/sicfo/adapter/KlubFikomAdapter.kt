@@ -10,17 +10,17 @@ import com.rpl.sicfo.R
 import com.rpl.sicfo.data.KlubFikom
 import com.squareup.picasso.Picasso
 
-class KlubFikomAdapter (
+class KlubFikomAdapter(
     private val klubList: List<KlubFikom>,
     private val listener: OnItemClickListener
 ) : RecyclerView.Adapter<KlubFikomAdapter.KlubViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): KlubFikomAdapter.KlubViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): KlubViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_klub_fikom, parent, false)
         return KlubViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: KlubFikomAdapter.KlubViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: KlubViewHolder, position: Int) {
         val klub = klubList[position]
         holder.bind(klub)
     }
@@ -41,13 +41,14 @@ class KlubFikomAdapter (
                 }
             }
         }
+
         fun bind(klub: KlubFikom) {
             textViewTitle.text = klub.title
-            Picasso.get().load(klub.image).into(imageView)
+            Picasso.get().load(klub.logo).into(imageView)
         }
     }
+
     interface OnItemClickListener {
         fun onItemClick(klub: KlubFikom)
     }
-
 }

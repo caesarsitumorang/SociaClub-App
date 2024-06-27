@@ -53,34 +53,13 @@ class ButtonSheetPicture  : BottomSheetDialogFragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnCamera.setOnClickListener {
-            startCamera()
-        }
-
         binding.btnGalery.setOnClickListener {
             startGallery()
         }
     }
 
-    private fun startCamera() {
-        // Implement camera functionality here if needed
-    }
-
     private fun startGallery(){
         launcherGallery.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
-    }
-
-    private val launcherCamera = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            val data = result.data
-            if (data != null) {
-                val uri = data.getStringExtra(ProfilFragment.EXTRA_PROFILE)
-                onImageSelectedListener?.onImageSelected(Uri.parse(uri))
-                dismiss()
-            }
-        }
     }
 
     private val launcherGallery = registerForActivityResult(

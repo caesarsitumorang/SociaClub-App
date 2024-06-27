@@ -6,22 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".ui.organisasiFikom.DetailOrganisasiFikomActivity">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <View
-            android:id="@+id/view4"
-            android:layout_width="0dp"
-            android:layout_height="139dp"
-            android:background="@drawable/bg_detail_organisasi"
-            app:layout_constraintBottom_toTopOf="@+id/tv_Profil_lengkap"
-            app:layout_constraintEnd_toEndOf="parent"
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="410dp"
+            android:layout_height="150dp"
+            android:src="@drawable/bg_detail_organisasi"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            tools:ignore="MissingConstraints" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/logobem"
+            android:layout_width="97dp"
+            android:layout_height="91dp"
+            android:src="@drawable/logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
         <ImageButton
             android:id="@+id/ib_back"
@@ -36,120 +41,200 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/img_logo"
-            android:layout_width="106dp"
-            android:layout_height="83dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/avatar"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.005" />
-
         <TextView
-            android:id="@+id/tv_title_organisasi"
+            android:id="@+id/tv_title_detail_organisasi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:inputType="textMultiLine"
-            android:maxLines="2"
-            android:text="lohoan"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/view4"
-            app:layout_constraintEnd_toEndOf="@+id/img_logo"
-            app:layout_constraintStart_toStartOf="@+id/img_logo"
-            app:layout_constraintTop_toBottomOf="@+id/img_logo"
-            app:layout_constraintVertical_bias="0.0" />
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center_vertical"
+            android:text="BADAN EKSEKUTIF MAHASISWA"
+            android:textSize="17dp"
+            app:layout_constraintEnd_toEndOf="@+id/logobem"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="@+id/logobem"
+            app:layout_constraintTop_toBottomOf="@+id/logobem" />
 
         <TextView
-            android:id="@+id/tv_fakultas"
+            android:id="@+id/fak"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="loho"
-            app:layout_constraintEnd_toEndOf="@+id/tv_title_organisasi"
-            app:layout_constraintHorizontal_bias="0.514"
-            app:layout_constraintStart_toStartOf="@+id/tv_title_organisasi"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title_organisasi" />
-
-        <ImageView
-            android:id="@+id/img_detail1"
-            android:layout_width="450dp"
-            android:layout_height="305dp"
-            android:layout_marginTop="48dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.512"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_logo" />
-
-        <TextView
-            android:id="@+id/tv_profil"
-            android:layout_width="83dp"
-            android:layout_height="19dp"
-            android:layout_marginTop="16dp"
-            android:text="Profil"
+            android:fontFamily="@font/poppins"
+            android:text="Fakultas Ilmu Komputer"
+            android:textSize="14dp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.035"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_detail1" />
+            app:layout_constraintEnd_toEndOf="@+id/tv_title_detail_organisasi"
+            app:layout_constraintStart_toStartOf="@+id/tv_title_detail_organisasi"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_detail_organisasi" />
 
         <ImageView
-            android:id="@+id/tv_Profil_lengkap"
-            android:layout_width="0dp"
-            android:layout_height="212dp"
-            android:layout_marginTop="12dp"
-            android:text="dbahdabhdaobkajpdba"
+            android:id="@+id/img_welcome"
+            android:layout_width="432dp"
+            android:layout_height="278dp"
+            android:src="@drawable/nomor3"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/tv_profil"
-            app:layout_constraintTop_toBottomOf="@+id/tv_profil" />
-
-        <TextView
-            android:id="@+id/tv_visi_misi"
-            android:layout_width="0dp"
-            android:layout_height="19dp"
-            android:layout_marginTop="20dp"
-            android:text="Visi Misi"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.006"
-            app:layout_constraintStart_toStartOf="@+id/tv_profil"
-            app:layout_constraintTop_toBottomOf="@+id/tv_Profil_lengkap" />
-
-        <ImageView
-            android:id="@+id/img_detail_misi"
-            android:layout_width="355dp"
-            android:layout_height="564dp"
-            android:layout_marginTop="32dp"
-            app:layout_constraintEnd_toEndOf="@+id/tv_Profil_lengkap"
-            app:layout_constraintStart_toStartOf="@+id/tv_Profil_lengkap"
-            app:layout_constraintTop_toTopOf="@+id/tv_visi_misi" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="159dp"
-            android:layout_height="27dp"
-            android:layout_marginTop="20dp"
-            android:text="Struktural BEM FIKOM"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.523"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_detail_misi" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
-        <ImageView
-            android:id="@+id/img_struktural_bem"
-            android:layout_width="390dp"
-            android:layout_height="281dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.421"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/img_welcome">
+
+            <TextView
+                android:id="@+id/tv_title_profil"
+                android:layout_width="80dp"
+                android:layout_height="31dp"
+                android:layout_marginTop="2dp"
+                android:gravity="center_vertical"
+                style="@style/textColorTitleHome"
+                android:text="Profil"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/tv_detail_profil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                style="@style/textColorTitleOrganizer" />
+
+            <TextView
+                android:id="@+id/tv_profil1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                style="@style/textColorTitleOrganizer" />
+
+            <TextView
+                android:id="@+id/tv_profil2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/textColorTitleOrganizer" />
+
+            <TextView
+                android:id="@+id/tv_profil3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                style="@style/textColorTitleOrganizer" />
+
+            <TextView
+                android:id="@+id/tv_profil4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                style="@style/textColorTitleOrganizer" />
+
+            <TextView
+                android:id="@+id/tv_profil5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                style="@style/textColorTitleOrganizer" />
+
+            <TextView
+                android:id="@+id/tv_ajakan_profil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:textSize="16sp"
+                style="@style/textColorTitleOrganizer" />
+
+            <TextView
+                android:id="@+id/tv_title_visiMisi"
+                android:layout_width="150dp"
+                android:layout_height="31dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="24dp"
+                style="@style/textColorTitleHome"
+                android:gravity="center_vertical"
+                android:text="Visi dan Misi"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/tv_title_visi"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="150dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Visi"
+                android:textColor="@color/red_200"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/tv_detail_visi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/textColorTitleOrganizer" />
+
+            <TextView
+                android:id="@+id/tv_title_misi"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="150dp"
+                android:layout_marginTop="14dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Misi"
+                android:textColor="@color/red_200"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/tv_detail_misi1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/textColorTitleOrganizer"
+              />
+
+            <TextView
+                android:id="@+id/tv_detail_misi2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/textColorTitleOrganizer" />
+
+            <TextView
+                android:id="@+id/tv_detail_misi3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/textColorTitleOrganizer" />
+
+            <TextView
+                android:id="@+id/tv_detail_misi4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/textColorTitleOrganizer"
+                />
+
+            <TextView
+                android:id="@+id/tv_detail_misi5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/textColorTitleOrganizer" />
+
+            <TextView
+                android:id="@+id/tv_title_struktur"
+                android:layout_width="250dp"
+                android:layout_height="31dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="24dp"
+                style="@style/textColorTitleHome"
+                android:gravity="center_vertical"
+                android:text="Struktur BEM - FIKOM"
+                android:textSize="20dp" />
+
+
+            <ImageView
+                android:id="@+id/img_struktural_bem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/strukturbem"
+                 />
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.core.widget.NestedScrollView>

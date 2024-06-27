@@ -125,37 +125,52 @@ class ProfilFragment : Fragment(), ButtonSheetPicture.OnImageSelectedListener, O
                             if (anggotaNpm == npm) {
                                 val title = dataSnapshot.child("title").getValue(String::class.java)
                                 val logo = dataSnapshot.child("logo").getValue(String::class.java)
-                                val profil =
-                                    dataSnapshot.child("profil").getValue(String::class.java)
-                                val fakultas =
-                                    dataSnapshot.child("fakultas").getValue(String::class.java)
-                                val image1 =
-                                    dataSnapshot.child("image1").getValue(String::class.java)
-                                val image2 =
-                                    dataSnapshot.child("image2").getValue(String::class.java)
-                                val image3 =
-                                    dataSnapshot.child("image3").getValue(String::class.java)
-                                val strukturalImage = dataSnapshot.child("strukturalImage")
-                                    .getValue(String::class.java)
-                                val visiMisi =
-                                    dataSnapshot.child("visiMisi").getValue(String::class.java)
-//                    val anggota = dataSnapshot.child("anggota").getValue(String::class.java)
-                                val detailTitle =
-                                    dataSnapshot.child("detailTitle").getValue(String::class.java)
+                                val profil = dataSnapshot.child("detailProfil").getValue(String::class.java)
+                                val fakultas = dataSnapshot.child("fakultas").getValue(String::class.java)
+                                val image1 = dataSnapshot.child("image1").getValue(String::class.java)
+                                val image2 = dataSnapshot.child("image2").getValue(String::class.java)
+                                val image3 = dataSnapshot.child("image3").getValue(String::class.java)
+                                val strukturalImage = dataSnapshot.child("strukturalImage").getValue(String::class.java)
+                                val visiMisi = dataSnapshot.child("visiMisi").getValue(String::class.java)
+                                val detailTitle = dataSnapshot.child("detailTitle").getValue(String::class.java)
+                                val tvProfil1 = dataSnapshot.child("tvProfil1").getValue(String::class.java)
+                                val tvProfil2 = dataSnapshot.child("tvProfil2").getValue(String::class.java)
+                                val tvProfil3 = dataSnapshot.child("tvProfil3").getValue(String::class.java)
+                                val tvProfil4 = dataSnapshot.child("tvProfil4").getValue(String::class.java)
+                                val tvProfil5 = dataSnapshot.child("tvProfil5").getValue(String::class.java)
+                                val ajakanProfil = dataSnapshot.child("tvAjakanProfil").getValue(String::class.java)
+                                val detailVisi = dataSnapshot.child("tvDetailVisi").getValue(String::class.java)
+                                val tvDetailMisi1 = dataSnapshot.child("tvDetailMisi1").getValue(String::class.java)
+                                val tvDetailMisi2 = dataSnapshot.child("tvDetailMisi2").getValue(String::class.java)
+                                val tvDetailMisi3 = dataSnapshot.child("tvDetailMisi3").getValue(String::class.java)
+                                val tvDetailMisi4 = dataSnapshot.child("tvDetailMisi4").getValue(String::class.java)
+                                val tvDetailMisi5 = dataSnapshot.child("tvDetailMisi5").getValue(String::class.java)
+
 
                                 if (title != null && logo != null && detailTitle != null && fakultas != null) {
                                     val organisasi = Organisasi(
                                         title = title,
                                         logo = logo,
-                                        profil = profil ?: "",
+                                        detailProfil = profil ?: "",
                                         fakultas = fakultas,
                                         image1 = image1 ?: "",
                                         image2 = image2 ?: "",
                                         image3 = image3 ?: "",
                                         strukturalImage = strukturalImage ?: "",
                                         visiMisi = visiMisi ?: "",
-//                            anggota = anggota ?: "",
-                                        detailTitle = detailTitle
+                                        detailTitle = detailTitle,
+                                        tvProfil1 = tvProfil1 ?: "",
+                                        tvProfil2 = tvProfil2 ?: "",
+                                        tvProfil3 = tvProfil3 ?: "",
+                                        tvProfil4 = tvProfil4 ?: "",
+                                        tvProfil5 = tvProfil5 ?: "",
+                                        tvAjakanProfil = ajakanProfil ?: "",
+                                        tvDetailVisi = detailVisi ?: "",
+                                        tvDetailMisi1 = tvDetailMisi1 ?: "",
+                                        tvDetailMisi2 = tvDetailMisi2 ?: "",
+                                        tvDetailMisi3 = tvDetailMisi3 ?: "",
+                                        tvDetailMisi4 = tvDetailMisi4 ?: "",
+                                        tvDetailMisi5 = tvDetailMisi5 ?: ""
                                     )
                                     organisasiList.add(organisasi)
                                     break
@@ -304,15 +319,26 @@ class ProfilFragment : Fragment(), ButtonSheetPicture.OnImageSelectedListener, O
         val intent = Intent(requireContext(), DetailOrganisasiFikomActivity::class.java).apply {
             putExtra("title", organisasi.title)
             putExtra("logo", organisasi.logo)
-            putExtra("profil", organisasi.profil)
+            putExtra("detailProfil", organisasi.detailProfil)
             putExtra("image1", organisasi.image1)
             putExtra("image2", organisasi.image2)
             putExtra("image3", organisasi.image3)
             putExtra("visiMisi", organisasi.visiMisi)
             putExtra("fakultas", organisasi.fakultas)
             putExtra("strukturalImage", organisasi.strukturalImage)
-            putExtra("anggota", organisasi.anggota)
             putExtra("detailTitle", organisasi.detailTitle)
+            putExtra("tvProfil1", organisasi.tvProfil1)
+            putExtra("tvProfil2", organisasi.tvProfil2)
+            putExtra("tvProfil3", organisasi.tvProfil3)
+            putExtra("tvProfil4", organisasi.tvProfil4)
+            putExtra("tvProfil5", organisasi.tvProfil5)
+            putExtra("tvDetailVisi", organisasi.tvDetailVisi)
+            putExtra("tvDetailMisi1", organisasi.tvDetailMisi1)
+            putExtra("tvDetailMisi2", organisasi.tvDetailMisi2)
+            putExtra("tvDetailMisi3", organisasi.tvDetailMisi3)
+            putExtra("tvDetailMisi4", organisasi.tvDetailMisi4)
+            putExtra("tvDetailMisi5", organisasi.tvDetailMisi5)
+            putExtra("tvAjakanProfil", organisasi.tvAjakanProfil)
         }
         startActivity(intent)
     }

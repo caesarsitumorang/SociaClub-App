@@ -32,7 +32,6 @@ import com.rpl.sicfo.ui.home.pencarian.SearchActivity
 import com.rpl.sicfo.ui.klubFikom.DetailKlubFikomActivity
 import com.rpl.sicfo.ui.notifikasi.NotifikasiActivity
 import com.rpl.sicfo.ui.organisasiFikom.DetailOrganisasiFikomActivity
-import com.rpl.sicfo.ui.register.RegisterActivity
 import java.util.Timer
 import java.util.TimerTask
 
@@ -67,15 +66,26 @@ class HomeFragment : Fragment(),
         val intent = Intent(requireContext(), DetailOrganisasiFikomActivity::class.java).apply {
             putExtra("title", organisasi.title)
             putExtra("logo", organisasi.logo)
-            putExtra("profil", organisasi.profil)
+            putExtra("detailProfil", organisasi.detailProfil)
             putExtra("image1", organisasi.image1)
             putExtra("image2", organisasi.image2)
             putExtra("image3", organisasi.image3)
             putExtra("visiMisi", organisasi.visiMisi)
             putExtra("fakultas", organisasi.fakultas)
             putExtra("strukturalImage", organisasi.strukturalImage)
-            putExtra("anggota", organisasi.anggota)
             putExtra("detailTitle", organisasi.detailTitle)
+            putExtra("tvProfil1", organisasi.tvProfil1)
+            putExtra("tvProfil2", organisasi.tvProfil2)
+            putExtra("tvProfil3", organisasi.tvProfil3)
+            putExtra("tvProfil4", organisasi.tvProfil4)
+            putExtra("tvProfil5", organisasi.tvProfil5)
+            putExtra("tvDetailVisi", organisasi.tvDetailVisi)
+            putExtra("tvDetailMisi1", organisasi.tvDetailMisi1)
+            putExtra("tvDetailMisi2", organisasi.tvDetailMisi2)
+            putExtra("tvDetailMisi3", organisasi.tvDetailMisi3)
+            putExtra("tvDetailMisi4", organisasi.tvDetailMisi4)
+            putExtra("tvDetailMisi5", organisasi.tvDetailMisi5)
+            putExtra("tvAjakanProfil", organisasi.tvAjakanProfil)
         }
         startActivity(intent)
     }
@@ -83,8 +93,27 @@ class HomeFragment : Fragment(),
     override fun onItemClick(klub: KlubFikom) {
         val intent = Intent(requireContext(), DetailKlubFikomActivity::class.java).apply {
             putExtra("title", klub.title)
-            putExtra("image", klub.image)
+            putExtra("logo", klub.logo)
+            putExtra("detailProfil", klub.detailProfil)
             putExtra("image1", klub.image1)
+            putExtra("image2", klub.image2)
+            putExtra("image3", klub.image3)
+            putExtra("visiMisi", klub.visiMisi)
+            putExtra("fakultas", klub.fakultas)
+            putExtra("strukturalImage", klub.strukturalImage)
+            putExtra("detailTitle", klub.title)
+            putExtra("tvProfil1", klub.tvProfil1)
+            putExtra("tvProfil2", klub.tvProfil2)
+            putExtra("tvProfil3", klub.tvProfil3)
+            putExtra("tvProfil4", klub.tvProfil4)
+            putExtra("tvProfil5", klub.tvProfil5)
+            putExtra("tvDetailVisi", klub.tvDetailVisi)
+            putExtra("tvDetailMisi1", klub.tvDetailMisi1)
+            putExtra("tvDetailMisi2", klub.tvDetailMisi2)
+            putExtra("tvDetailMisi3", klub.tvDetailMisi3)
+            putExtra("tvDetailMisi4", klub.tvDetailMisi4)
+            putExtra("tvDetailMisi5", klub.tvDetailMisi5)
+            putExtra("tvAjakanProfil", klub.tvAjakanProfil)
         }
         startActivity(intent)
     }
@@ -93,7 +122,6 @@ class HomeFragment : Fragment(),
         super.onCreate(savedInstanceState)
         database = FirebaseDatabase.getInstance().reference
         auth = FirebaseAuth.getInstance()
-
 
     }
 
@@ -105,7 +133,7 @@ class HomeFragment : Fragment(),
         setupRVBeritaKegiatan()
         setupRVOrganisasiFikom()
         setupRVKlubFikom()
-        fetchDataFromFirebase()
+        fetchDataBeritaFromFirebase()
         fetchOrganisasiDataFromFirebase()
         fetchUserFullName()
         fetchDataKlubFromFirebase()
@@ -173,26 +201,7 @@ class HomeFragment : Fragment(),
         }, 0, 3000)
     }
 
-    private fun setupSliderOrganisasi(layoutManagerOrganisasi: LinearLayoutManager) {
-        val snapHelper = LinearSnapHelper()
-        snapHelper.attachToRecyclerView(binding.rvOrganisasi)
-
-        timer = Timer()
-        timer?.scheduleAtFixedRate(object : TimerTask() {
-            override fun run() {
-                val currentPosition = layoutManagerOrganisasi.findLastCompletelyVisibleItemPosition()
-                Log.d(TAG, "posisi sekarang: $currentPosition , jumlah data: ${adapterorganisasi.itemCount}")
-
-                if (currentPosition < (adapterorganisasi.itemCount - 1)) {
-                    layoutManagerOrganisasi.smoothScrollToPosition(binding.rvOrganisasi, RecyclerView.State(), currentPosition + 1)
-                } else {
-                    layoutManagerOrganisasi.smoothScrollToPosition(binding.rvOrganisasi, RecyclerView.State(), 0)
-                }
-            }
-        }, 0, 3000)
-    }
-
-    private fun fetchDataFromFirebase() {
+    private fun fetchDataBeritaFromFirebase() {
         database.child("BeritaKegiatan").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 beritaList.clear()
@@ -221,10 +230,53 @@ class HomeFragment : Fragment(),
                 klubList.clear()
                 for (dataSnapshot in snapshot.children) {
                     val title = dataSnapshot.child("title").getValue(String::class.java)
-                    val imageUrl = dataSnapshot.child("image").getValue(String::class.java)
+                    val logo = dataSnapshot.child("logo").getValue(String::class.java)
+                    val detailProfil = dataSnapshot.child("detailProfil").getValue(String::class.java)
+                    val visiMisi = dataSnapshot.child("visiMisi").getValue(String::class.java)
+                    val strukturalImage = dataSnapshot.child("strukturalImage").getValue(String::class.java)
+                    val detailTitle = dataSnapshot.child("detailTitle").getValue(String::class.java)
+                    val fakultas = dataSnapshot.child("fakultas").getValue(String::class.java)
                     val image1 = dataSnapshot.child("image1").getValue(String::class.java)
-                    if (title != null && imageUrl != null && image1 != null ) {
-                        val klub = KlubFikom(title, imageUrl,image1)
+                    val image2 = dataSnapshot.child("image2").getValue(String::class.java)
+                    val image3 = dataSnapshot.child("image3").getValue(String::class.java)
+                    val tvAjakanProfil = dataSnapshot.child("tvAjakanProfil").getValue(String::class.java)
+                    val tvDetailVisi = dataSnapshot.child("tvDetailVisi").getValue(String::class.java)
+                    val tvDetailMisi1 = dataSnapshot.child("tvDetailMisi1").getValue(String::class.java)
+                    val tvDetailMisi2 = dataSnapshot.child("tvDetailMisi2").getValue(String::class.java)
+                    val tvDetailMisi3 = dataSnapshot.child("tvDetailMisi3").getValue(String::class.java)
+                    val tvDetailMisi4 = dataSnapshot.child("tvDetailMisi4").getValue(String::class.java)
+                    val tvDetailMisi5 = dataSnapshot.child("tvDetailMisi5").getValue(String::class.java)
+                    val tvProfil1 = dataSnapshot.child("tvProfil1").getValue(String::class.java)
+                    val tvProfil2 = dataSnapshot.child("tvProfil2").getValue(String::class.java)
+                    val tvProfil3 = dataSnapshot.child("tvProfil3").getValue(String::class.java)
+                    val tvProfil4 = dataSnapshot.child("tvProfil4").getValue(String::class.java)
+                    val tvProfil5 = dataSnapshot.child("tvProfil5").getValue(String::class.java)
+
+                    if (title != null && logo != null && fakultas != null ) {
+                        val klub = KlubFikom(
+                            title = title,
+                            logo = logo,
+                            detailProfil = detailProfil ?: "",
+                            visiMisi = visiMisi ?: "",
+                            strukturalImage = strukturalImage ?: "",
+                            detailTitle = detailTitle ?: "",
+                            fakultas = fakultas,
+                            image1 = image1 ?: "",
+                            image2 = image2 ?: "",
+                            image3 = image3 ?: "",
+                            tvAjakanProfil = tvAjakanProfil ?: "",
+                            tvDetailVisi = tvDetailVisi ?: "",
+                            tvDetailMisi1 = tvDetailMisi1 ?: "",
+                            tvDetailMisi2 = tvDetailMisi2 ?: "",
+                            tvDetailMisi3 = tvDetailMisi3 ?: "",
+                            tvDetailMisi4 = tvDetailMisi4 ?: "",
+                            tvDetailMisi5 = tvDetailMisi5 ?: "",
+                            tvProfil1 = tvProfil1 ?: "",
+                            tvProfil2 = tvProfil2 ?: "",
+                            tvProfil3 = tvProfil3 ?: "",
+                            tvProfil4 = tvProfil4 ?: "",
+                            tvProfil5 = tvProfil5 ?: ""
+                        )
                         klubList.add(klub)
                     }
                 }
@@ -237,6 +289,8 @@ class HomeFragment : Fragment(),
         })
     }
 
+
+
     private fun fetchOrganisasiDataFromFirebase() {
         database.child("OrganisasiFikom").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -244,7 +298,7 @@ class HomeFragment : Fragment(),
                 for (dataSnapshot in snapshot.children) {
                     val title = dataSnapshot.child("title").getValue(String::class.java)
                     val logo = dataSnapshot.child("logo").getValue(String::class.java)
-                    val profil = dataSnapshot.child("profil").getValue(String::class.java)
+                    val profil = dataSnapshot.child("detailProfil").getValue(String::class.java)
                     val fakultas = dataSnapshot.child("fakultas").getValue(String::class.java)
                     val image1 = dataSnapshot.child("image1").getValue(String::class.java)
                     val image2 = dataSnapshot.child("image2").getValue(String::class.java)
@@ -252,19 +306,43 @@ class HomeFragment : Fragment(),
                     val strukturalImage = dataSnapshot.child("strukturalImage").getValue(String::class.java)
                     val visiMisi = dataSnapshot.child("visiMisi").getValue(String::class.java)
                     val detailTitle = dataSnapshot.child("detailTitle").getValue(String::class.java)
+                    val tvProfil1 = dataSnapshot.child("tvProfil1").getValue(String::class.java)
+                    val tvProfil2 = dataSnapshot.child("tvProfil2").getValue(String::class.java)
+                    val tvProfil3 = dataSnapshot.child("tvProfil3").getValue(String::class.java)
+                    val tvProfil4 = dataSnapshot.child("tvProfil4").getValue(String::class.java)
+                    val tvProfil5 = dataSnapshot.child("tvProfil5").getValue(String::class.java)
+                    val ajakanProfil = dataSnapshot.child("tvAjakanProfil").getValue(String::class.java)
+                    val detailVisi = dataSnapshot.child("tvDetailVisi").getValue(String::class.java)
+                    val tvDetailMisi1 = dataSnapshot.child("tvDetailMisi1").getValue(String::class.java)
+                    val tvDetailMisi2 = dataSnapshot.child("tvDetailMisi2").getValue(String::class.java)
+                    val tvDetailMisi3 = dataSnapshot.child("tvDetailMisi3").getValue(String::class.java)
+                    val tvDetailMisi4 = dataSnapshot.child("tvDetailMisi4").getValue(String::class.java)
+                    val tvDetailMisi5 = dataSnapshot.child("tvDetailMisi5").getValue(String::class.java)
 
                     if (title != null && logo != null && detailTitle != null && fakultas != null) {
                         val organisasi = Organisasi(
                             title = title,
                             logo = logo,
-                            profil = profil ?: "",
+                            detailProfil = profil ?: "",
                             fakultas = fakultas,
                             image1 = image1 ?: "",
                             image2 = image2 ?: "",
                             image3 = image3 ?: "",
                             strukturalImage = strukturalImage ?: "",
                             visiMisi = visiMisi ?: "",
-                            detailTitle = detailTitle
+                            detailTitle = detailTitle,
+                            tvProfil1 = tvProfil1 ?: "",
+                            tvProfil2 = tvProfil2 ?: "",
+                            tvProfil3 = tvProfil3 ?: "",
+                            tvProfil4 = tvProfil4 ?: "",
+                            tvProfil5 = tvProfil5 ?: "",
+                            tvAjakanProfil = ajakanProfil ?: "",
+                            tvDetailVisi = detailVisi ?: "",
+                            tvDetailMisi1 = tvDetailMisi1 ?: "",
+                            tvDetailMisi2 = tvDetailMisi2 ?: "",
+                            tvDetailMisi3 = tvDetailMisi3 ?: "",
+                            tvDetailMisi4 = tvDetailMisi4 ?: "",
+                            tvDetailMisi5 = tvDetailMisi5 ?: ""
                         )
                         organisasiList.add(organisasi)
                     }
@@ -322,24 +400,21 @@ class HomeFragment : Fragment(),
                                 .load(imageUrl)
                                 .into(imageView)
                         } else {
-                            // Handle case where image URL is empty or not found
-                            imageView.setImageResource(R.drawable.avatar) // Placeholder image or default
+                            imageView.setImageResource(R.drawable.avatar)
                         }
                     } else {
-                        // Handle case where user data snapshot doesn't exist
-                        imageView.setImageResource(R.drawable.avatar) // Placeholder image or default
+
+                        imageView.setImageResource(R.drawable.avatar)
                     }
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    // Handle database error
                     Log.e(TAG, "Failed to fetch user image: ${error.message}")
-                    imageView.setImageResource(R.drawable.avatar) // Placeholder image or default
+                    imageView.setImageResource(R.drawable.avatar)
                 }
             })
         } else {
-            // Handle case where user is not logged in
-            imageView.setImageResource(R.drawable.avatar) // Placeholder image or default
+            imageView.setImageResource(R.drawable.avatar)
         }
     }
 

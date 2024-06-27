@@ -20,7 +20,7 @@
     </style>
 
     <style name="textColorTitleChat">
-        <item name="android:fontFamily">@font/poppins_light</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
         <item name="android:textColor">@color/black</item>
     </style>
 

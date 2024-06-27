@@ -12,18 +12,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="11sp"
+        android:text="lohoahia"
         style="@style/textColorTitleChat"
         android:layout_marginBottom="2dp"
-    android:gravity="end" /> <!-- Untuk pesan dari pengguna aplikasi, gunakan gravity "end" -->
+        android:gravity="end" />
 
     <TextView
         android:id="@+id/tvMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
+        android:text="dgahdoavhdoadyagoy"
         android:background="@drawable/bg_chat_user"
-        style="@style/textColorTitleChat"
+        style="@style/textColorTitleOrganizer"
         android:padding="8dp"
-        android:gravity="start" /> <!-- Untuk pesan dari akun lain, gunakan gravity "start" -->
+        android:gravity="start" />
+
+    <ImageView
+        android:id="@+id/imageMessage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="4dp"
+        android:visibility="gone"
+        android:scaleType="centerCrop"
+        android:background="@drawable/rounded_corners"/>
 
 </LinearLayout>
